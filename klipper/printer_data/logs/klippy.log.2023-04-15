@@ -1,0 +1,3980 @@
+===== Config file =====
+[mcu]
+restart_method = command
+serial = /dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00
+
+[stepper_x]
+step_pin = PC14
+dir_pin = !PC13
+enable_pin = !PC15
+microsteps = 16
+rotation_distance = 40
+full_steps_per_rotation = 200
+endstop_pin = PA14
+position_min = 0
+position_endstop = 230
+position_max = 230
+homing_speed = 50
+homing_retract_dist = 5
+homing_positive_dir = true
+step_pulse_duration = 0.000008
+
+[stepper_y]
+step_pin = PE5
+dir_pin = !PE4
+enable_pin = !PD14
+microsteps = 16
+rotation_distance = 40
+full_steps_per_rotation = 200
+endstop_pin = PA15
+position_min = 0
+position_endstop = 230
+position_max = 230
+homing_speed = 50
+homing_retract_dist = 5
+homing_positive_dir = true
+step_pulse_duration = 0.000008
+
+[stepper_z]
+step_pin = PE1
+dir_pin = !PE0
+enable_pin = !PE2
+microsteps = 16
+rotation_distance = 40
+full_steps_per_rotation = 200
+gear_ratio = 80:16
+endstop_pin = probe:z_virtual_endstop
+position_max = 255
+position_min = -5
+homing_speed = 8
+second_homing_speed = 3
+
+[stepper_z1]
+step_pin = PD6
+dir_pin = PD5
+enable_pin = !PD7
+microsteps = 16
+rotation_distance = 40
+full_steps_per_rotation = 200
+gear_ratio = 80:16
+
+[stepper_z2]
+step_pin = PD2
+dir_pin = PD1
+enable_pin = !PD3
+microsteps = 16
+rotation_distance = 40
+full_steps_per_rotation = 200
+gear_ratio = 80:16
+
+[stepper_z3]
+step_pin = PC7
+dir_pin = PC6
+enable_pin = !PC8
+microsteps = 16
+rotation_distance = 40
+full_steps_per_rotation = 200
+gear_ratio = 80:16
+
+[extruder]
+step_pin = PB5
+dir_pin = !PB4
+enable_pin = !PB6
+microsteps = 16
+rotation_distance = 25.12
+gear_ratio = 50:17
+full_steps_per_rotation = 200
+nozzle_diameter = 0.400
+filament_diameter = 1.750
+min_temp = 0
+max_temp = 275
+heater_pin = PB1
+sensor_type = NTC 100K MGB18-104F39050L32
+sensor_pin = PC1
+max_power = 1.0
+control = pid
+pid_kp = 26.213
+pid_ki = 1.304
+pid_kd = 131.721
+pressure_advance = 0.00
+pressure_advance_smooth_time = 0.150
+max_extrude_cross_section = 20
+instantaneous_corner_velocity = 1.000
+max_extrude_only_distance = 50.0
+max_extrude_only_velocity = 5000
+max_extrude_only_accel = 2000
+step_pulse_duration = 0.000004
+
+[fan]
+pin = PA2
+
+[heater_fan fan1]
+pin = PA1
+shutdown_speed = 1
+
+[heater_fan fan2]
+pin = PA0
+shutdown_speed = 1
+
+[idle_timeout]
+timeout = 3600
+
+[safe_z_home]
+home_xy_position = 115,115
+speed = 100
+z_hop = 10
+z_hop_speed = 5
+
+[quad_gantry_level]
+gantry_corners = 
+	-58,-7
+	308,318
+points = 
+	10,10
+	10,200
+	220,200
+	220,10
+speed = 80
+horizontal_move_z = 10
+retries = 1
+retry_tolerance = 0.05
+max_adjust = 30
+
+[probe]
+pin = !PB15
+x_offset = 0
+y_offset = 25.0
+z_offset = 0.55
+speed = 10.0
+samples = 2
+samples_result = median
+sample_retract_dist = 3.0
+samples_tolerance = 0.05
+samples_tolerance_retries = 1
+
+[printer]
+kinematics = corexy
+max_velocity = 500
+max_accel = 8000
+max_accel_to_decel = 4000
+max_z_velocity = 15
+max_z_accel = 100
+square_corner_velocity = 2.0
+
+[tmc2209 stepper_x]
+uart_pin = PE6
+run_current = 0.8
+hold_current = 0.5
+interpolate = True
+stealthchop_threshold = 400
+
+[tmc2209 stepper_y]
+uart_pin = PE3
+run_current = 0.8
+hold_current = 0.5
+interpolate = True
+stealthchop_threshold = 400
+
+[tmc2209 stepper_z]
+uart_pin = PB7
+run_current = 0.8
+hold_current = 0.5
+interpolate = True
+stealthchop_threshold = 120
+
+[tmc2209 stepper_z1]
+uart_pin = PD4
+interpolate = True
+run_current = 0.8
+hold_current = 0.5
+stealthchop_threshold = 120
+
+[tmc2209 stepper_z2]
+uart_pin = PD0
+interpolate = True
+run_current = 0.8
+hold_current = 0.5
+stealthchop_threshold = 120
+
+[tmc2209 stepper_z3]
+uart_pin = PD15
+interpolate = True
+run_current = 0.8
+hold_current = 0.5
+stealthchop_threshold = 120
+
+[tmc2209 extruder]
+uart_pin = PB3
+run_current = 0.8
+hold_current = 0.5
+interpolate = True
+stealthchop_threshold = 400
+
+[board_pins]
+aliases = 
+	
+	EXP1_1=PB2,  EXP1_3=PE11, EXP1_5=PD9, EXP1_7=PE15, EXP1_9=<GND>,
+	EXP1_2=PE10, EXP1_4=PD10, EXP1_6=PD8, EXP1_8=PE7,  EXP1_10=<5V>,
+	
+	EXP2_1=PA6, EXP2_3=PE9, EXP2_5=PE8, EXP2_7=PD13,  EXP2_9=<GND>,
+	EXP2_2=PA5, EXP2_4=PA4, EXP2_6=PA7, EXP2_8=<RST>, EXP2_10=<3.3v>
+
+[display]
+lcd_type = uc1701
+cs_pin = EXP1_3
+a0_pin = EXP1_4
+rst_pin = EXP1_5
+contrast = 63
+encoder_pins = ^EXP2_5, ^EXP2_3
+click_pin = ^!EXP1_2
+spi_software_miso_pin = EXP2_1
+spi_software_mosi_pin = EXP2_6
+spi_software_sclk_pin = EXP2_2
+
+[output_pin beeper]
+pin = EXP1_1
+
+[neopixel fysetc_mini12864]
+pin = EXP1_6
+chain_count = 3
+color_order = RGB
+initial_red = 1.0
+initial_green = 1.0
+initial_blue = 0.0
+
+[mcu rpi]
+serial = /tmp/klipper_host_mcu
+
+[adxl345]
+cs_pin = rpi:None
+spi_bus = spidev0.0
+
+[resonance_tester]
+accel_chip = adxl345
+probe_points = 
+	100, 100, 20
+
+[input_shaper]
+shaper_freq_x = 68.4
+shaper_type_x = mzv
+shaper_freq_y = 45.6
+shaper_type_y = mzv
+
+[virtual_sdcard]
+path = /home/mks/printer_data/gcodes
+
+[pause_resume]
+
+[gcode_macro CANCEL_PRINT]
+description = Cancel the actual running print
+rename_existing = CANCEL_PRINT_BASE
+gcode = 
+	TURN_OFF_HEATERS
+	CANCEL_PRINT_BASE
+
+[display_status]
+
+[gcode_macro G32]
+gcode = 
+	BED_MESH_CLEAR
+	G28
+	QUAD_GANTRY_LEVEL
+	G2888
+=======================
+Args: ['/home/mks/klipper/klippy/klippy.py', '/home/mks/printer_data/config/printer.cfg', '-I', '/home/mks/printer_data/comms/klippy.serial', '-l', '/home/mks/printer_data/logs/klippy.log', '-a', '/home/mks/printer_data/comms/klippy.sock']
+Git version: 'v0.11.0-122-ge6ef48cd'
+CPU: 4 core ?
+Python: '3.7.3 (default, Oct 31 2022, 14:04:00) \n[GCC 8.3.0]'
+webhooks client 281473525116040: {'program': 'Moonraker', 'version': 'v0.8.0-23-g18f5ff4'}
+=============== Log rollover at Sat Apr 15 18:13:16 2023 ===============
+mcu 'mcu': Unable to open serial port: [Errno 2] could not open port /dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00: [Errno 2] No such file or directory: '/dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00'
+mcu 'mcu': Unable to open serial port: [Errno 2] could not open port /dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00: [Errno 2] No such file or directory: '/dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00'
+mcu 'mcu': Unable to open serial port: [Errno 2] could not open port /dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00: [Errno 2] No such file or directory: '/dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00'
+mcu 'mcu': Unable to open serial port: [Errno 2] could not open port /dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00: [Errno 2] No such file or directory: '/dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00'
+mcu 'mcu': Unable to open serial port: [Errno 2] could not open port /dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00: [Errno 2] No such file or directory: '/dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00'
+mcu 'mcu': Unable to open serial port: [Errno 2] could not open port /dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00: [Errno 2] No such file or directory: '/dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00'
+mcu 'mcu': Unable to open serial port: [Errno 2] could not open port /dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00: [Errno 2] No such file or directory: '/dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00'
+mcu 'mcu': Unable to open serial port: [Errno 2] could not open port /dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00: [Errno 2] No such file or directory: '/dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00'
+mcu 'mcu': Unable to open serial port: [Errno 2] could not open port /dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00: [Errno 2] No such file or directory: '/dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00'
+mcu 'mcu': Unable to open serial port: [Errno 2] could not open port /dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00: [Errno 2] No such file or directory: '/dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00'
+mcu 'mcu': Unable to open serial port: [Errno 2] could not open port /dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00: [Errno 2] No such file or directory: '/dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00'
+mcu 'mcu': Unable to open serial port: [Errno 2] could not open port /dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00: [Errno 2] No such file or directory: '/dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00'
+mcu 'mcu': Unable to open serial port: [Errno 2] could not open port /dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00: [Errno 2] No such file or directory: '/dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00'
+mcu 'mcu': Unable to open serial port: [Errno 2] could not open port /dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00: [Errno 2] No such file or directory: '/dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00'
+MCU error during connect
+Traceback (most recent call last):
+  File "/home/mks/klipper/klippy/mcu.py", line 798, in _mcu_identify
+    self._serial.connect_uart(self._serialport, self._baud, rts)
+  File "/home/mks/klipper/klippy/serialhdl.py", line 182, in connect_uart
+    self._error("Unable to connect")
+  File "/home/mks/klipper/klippy/serialhdl.py", line 61, in _error
+    raise error(self.warn_prefix + (msg % params))
+serialhdl.error: mcu 'mcu': Unable to connect
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/mks/klipper/klippy/klippy.py", line 176, in _connect
+    self.send_event("klippy:mcu_identify")
+  File "/home/mks/klipper/klippy/klippy.py", line 263, in send_event
+    return [cb(*params) for cb in self.event_handlers.get(event, [])]
+  File "/home/mks/klipper/klippy/klippy.py", line 263, in <listcomp>
+    return [cb(*params) for cb in self.event_handlers.get(event, [])]
+  File "/home/mks/klipper/klippy/mcu.py", line 803, in _mcu_identify
+    raise error(str(e))
+mcu.error: mcu 'mcu': Unable to connect
+Build file /home/mks/klipper/klippy/../.config(3223): Sun Mar  5 17:11:05 2023
+========= Last MCU build config =========
+CONFIG_LOW_LEVEL_OPTIONS=y
+# CONFIG_MACH_AVR is not set
+# CONFIG_MACH_ATSAM is not set
+# CONFIG_MACH_ATSAMD is not set
+# CONFIG_MACH_LPC176X is not set
+CONFIG_MACH_STM32=y
+# CONFIG_MACH_HC32F460 is not set
+# CONFIG_MACH_RP2040 is not set
+# CONFIG_MACH_PRU is not set
+# CONFIG_MACH_AR100 is not set
+# CONFIG_MACH_LINUX is not set
+# CONFIG_MACH_SIMU is not set
+CONFIG_BOARD_DIRECTORY="stm32"
+CONFIG_MCU="stm32f407xx"
+CONFIG_CLOCK_FREQ=168000000
+CONFIG_USBSERIAL=y
+CONFIG_FLASH_SIZE=0x80000
+CONFIG_FLASH_BOOT_ADDRESS=0x8000000
+CONFIG_RAM_START=0x20000000
+CONFIG_RAM_SIZE=0x20000
+CONFIG_STACK_SIZE=512
+CONFIG_FLASH_APPLICATION_ADDRESS=0x800C000
+CONFIG_STM32_SELECT=y
+# CONFIG_MACH_STM32F103 is not set
+# CONFIG_MACH_STM32F207 is not set
+# CONFIG_MACH_STM32F401 is not set
+# CONFIG_MACH_STM32F405 is not set
+CONFIG_MACH_STM32F407=y
+# CONFIG_MACH_STM32F429 is not set
+# CONFIG_MACH_STM32F446 is not set
+# CONFIG_MACH_STM32F031 is not set
+# CONFIG_MACH_STM32F042 is not set
+# CONFIG_MACH_STM32F070 is not set
+# CONFIG_MACH_STM32F072 is not set
+# CONFIG_MACH_STM32G070 is not set
+# CONFIG_MACH_STM32G071 is not set
+# CONFIG_MACH_STM32G0B0 is not set
+# CONFIG_MACH_STM32G0B1 is not set
+# CONFIG_MACH_STM32G431 is not set
+# CONFIG_MACH_STM32H723 is not set
+# CONFIG_MACH_STM32H743 is not set
+# CONFIG_MACH_STM32H750 is not set
+# CONFIG_MACH_STM32L412 is not set
+CONFIG_MACH_STM32F4=y
+CONFIG_MACH_STM32F4x5=y
+CONFIG_HAVE_STM32_USBOTG=y
+CONFIG_HAVE_STM32_CANBUS=y
+CONFIG_HAVE_STM32_USBCANBUS=y
+CONFIG_STM32_DFU_ROM_ADDRESS=0x1fff0000
+# CONFIG_STM32_FLASH_START_8000 is not set
+# CONFIG_STM32_FLASH_START_20200 is not set
+CONFIG_STM32_FLASH_START_C000=y
+# CONFIG_STM32_FLASH_START_4000 is not set
+# CONFIG_STM32_FLASH_START_0000 is not set
+CONFIG_STM32_CLOCK_REF_8M=y
+# CONFIG_STM32_CLOCK_REF_12M is not set
+# CONFIG_STM32_CLOCK_REF_16M is not set
+# CONFIG_STM32_CLOCK_REF_20M is not set
+# CONFIG_STM32_CLOCK_REF_25M is not set
+# CONFIG_STM32_CLOCK_REF_INTERNAL is not set
+CONFIG_CLOCK_REF_FREQ=8000000
+CONFIG_STM32F0_TRIM=16
+CONFIG_STM32_USB_PA11_PA12=y
+# CONFIG_STM32_SERIAL_USART1 is not set
+# CONFIG_STM32_SERIAL_USART1_ALT_PB7_PB6 is not set
+# CONFIG_STM32_SERIAL_USART2 is not set
+# CONFIG_STM32_SERIAL_USART2_ALT_PD6_PD5 is not set
+# CONFIG_STM32_SERIAL_USART3 is not set
+# CONFIG_STM32_SERIAL_USART3_ALT_PD9_PD8 is not set
+# CONFIG_STM32_CANBUS_PA11_PA12 is not set
+# CONFIG_STM32_CANBUS_PA11_PB9 is not set
+# CONFIG_STM32_MMENU_CANBUS_PB8_PB9 is not set
+# CONFIG_STM32_MMENU_CANBUS_PI9_PH13 is not set
+# CONFIG_STM32_MMENU_CANBUS_PB5_PB6 is not set
+# CONFIG_STM32_MMENU_CANBUS_PB12_PB13 is not set
+# CONFIG_STM32_MMENU_CANBUS_PD0_PD1 is not set
+# CONFIG_STM32_USBCANBUS_PA11_PA12 is not set
+CONFIG_USB=y
+CONFIG_USB_VENDOR_ID=0x1d50
+CONFIG_USB_DEVICE_ID=0x614e
+CONFIG_USB_SERIAL_NUMBER_CHIPID=y
+CONFIG_USB_SERIAL_NUMBER="12345"
+
+#
+# USB ids
+#
+# end of USB ids
+
+CONFIG_CANBUS_FREQUENCY=500000
+CONFIG_INITIAL_PINS=""
+CONFIG_HAVE_GPIO=y
+CONFIG_HAVE_GPIO_ADC=y
+CONFIG_HAVE_GPIO_SPI=y
+CONFIG_HAVE_GPIO_SDIO=y
+CONFIG_HAVE_GPIO_I2C=y
+CONFIG_HAVE_GPIO_HARD_PWM=y
+CONFIG_HAVE_GPIO_BITBANGING=y
+CONFIG_HAVE_STRICT_TIMING=y
+CONFIG_HAVE_CHIPID=y
+CONFIG_HAVE_STEPPER_BOTH_EDGE=y
+CONFIG_HAVE_BOOTLOADER_REQUEST=y
+CONFIG_INLINE_STEPPER_HACK=y
+=======================
+Build file /home/mks/klipper/klippy/../out/klipper.dict(8495): Sun Mar  5 17:11:35 2023
+Last MCU build version: ?-20230305_171135-mkspi
+Last MCU build tools: gcc: (15:7-2018-q2-6) 7.3.1 20180622 (release) [ARM/embedded-7-branch revision 261907] binutils: (2.31.1-12+11) 2.31.1
+Last MCU build config: ADC_MAX=4095 BUS_PINS_i2c1=PB6,PB7 BUS_PINS_i2c1a=PB8,PB9 BUS_PINS_i2c2=PB10,PB11 BUS_PINS_i2c2a=PH4,PH5 BUS_PINS_i2c3=PA8,PC9 BUS_PINS_i2c3a=PH7,PH8 BUS_PINS_sdio=PC12,PD2,PC8,PC9,PC10,PC11 BUS_PINS_spi1=PA6,PA7,PA5 BUS_PINS_spi1a=PB4,PB5,PB3 BUS_PINS_spi2=PB14,PB15,PB13 BUS_PINS_spi2a=PC2,PC3,PB10 BUS_PINS_spi2b=PI2,PI3,PI1 BUS_PINS_spi3=PB4,PB5,PB3 BUS_PINS_spi3a=PC11,PC12,PC10 CLOCK_FREQ=168000000 MCU=stm32f407xx PWM_MAX=255 RESERVE_PINS_USB=PA11,PA12 RESERVE_PINS_crystal=PH0,PH1 STATS_SUMSQ_BASE=256 STEPPER_BOTH_EDGE=1
+Build file /home/mks/klipper/klippy/../out/klipper.elf(377440): Sun Mar  5 17:11:46 2023
+Starting Klippy...
+Args: ['/home/mks/klipper/klippy/klippy.py', '/home/mks/printer_data/config/printer.cfg', '-I', '/home/mks/printer_data/comms/klippy.serial', '-l', '/home/mks/printer_data/logs/klippy.log', '-a', '/home/mks/printer_data/comms/klippy.sock']
+Git version: 'v0.11.0-122-ge6ef48cd'
+CPU: 4 core ?
+Python: '3.7.3 (default, Oct 31 2022, 14:04:00) \n[GCC 8.3.0]'
+Start printer at Sat Apr 15 18:20:57 2023 (1681554057.1 29.0)
+===== Config file =====
+[mcu]
+restart_method = command
+serial = /dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00
+
+[stepper_x]
+step_pin = PC14
+dir_pin = !PC13
+enable_pin = !PC15
+microsteps = 16
+rotation_distance = 40
+full_steps_per_rotation = 200
+endstop_pin = PA14
+position_min = 0
+position_endstop = 230
+position_max = 230
+homing_speed = 50
+homing_retract_dist = 5
+homing_positive_dir = true
+step_pulse_duration = 0.000008
+
+[stepper_y]
+step_pin = PE5
+dir_pin = !PE4
+enable_pin = !PD14
+microsteps = 16
+rotation_distance = 40
+full_steps_per_rotation = 200
+endstop_pin = PA15
+position_min = 0
+position_endstop = 230
+position_max = 230
+homing_speed = 50
+homing_retract_dist = 5
+homing_positive_dir = true
+step_pulse_duration = 0.000008
+
+[stepper_z]
+step_pin = PE1
+dir_pin = !PE0
+enable_pin = !PE2
+microsteps = 16
+rotation_distance = 40
+full_steps_per_rotation = 200
+gear_ratio = 80:16
+endstop_pin = probe:z_virtual_endstop
+position_max = 255
+position_min = -5
+homing_speed = 8
+second_homing_speed = 3
+
+[stepper_z1]
+step_pin = PD6
+dir_pin = PD5
+enable_pin = !PD7
+microsteps = 16
+rotation_distance = 40
+full_steps_per_rotation = 200
+gear_ratio = 80:16
+
+[stepper_z2]
+step_pin = PD2
+dir_pin = PD1
+enable_pin = !PD3
+microsteps = 16
+rotation_distance = 40
+full_steps_per_rotation = 200
+gear_ratio = 80:16
+
+[stepper_z3]
+step_pin = PC7
+dir_pin = PC6
+enable_pin = !PC8
+microsteps = 16
+rotation_distance = 40
+full_steps_per_rotation = 200
+gear_ratio = 80:16
+
+[extruder]
+step_pin = PB5
+dir_pin = !PB4
+enable_pin = !PB6
+microsteps = 16
+rotation_distance = 25.12
+gear_ratio = 50:17
+full_steps_per_rotation = 200
+nozzle_diameter = 0.400
+filament_diameter = 1.750
+min_temp = 0
+max_temp = 275
+heater_pin = PB1
+sensor_type = NTC 100K MGB18-104F39050L32
+sensor_pin = PC1
+max_power = 1.0
+control = pid
+pid_kp = 26.213
+pid_ki = 1.304
+pid_kd = 131.721
+pressure_advance = 0.00
+pressure_advance_smooth_time = 0.150
+max_extrude_cross_section = 20
+instantaneous_corner_velocity = 1.000
+max_extrude_only_distance = 50.0
+max_extrude_only_velocity = 5000
+max_extrude_only_accel = 2000
+step_pulse_duration = 0.000004
+
+[fan]
+pin = PA2
+
+[heater_fan fan1]
+pin = PA1
+shutdown_speed = 1
+
+[heater_fan fan2]
+pin = PA0
+shutdown_speed = 1
+
+[idle_timeout]
+timeout = 3600
+
+[safe_z_home]
+home_xy_position = 115,115
+speed = 100
+z_hop = 10
+z_hop_speed = 5
+
+[quad_gantry_level]
+gantry_corners = 
+	-58,-7
+	308,318
+points = 
+	10,10
+	10,200
+	220,200
+	220,10
+speed = 80
+horizontal_move_z = 10
+retries = 1
+retry_tolerance = 0.05
+max_adjust = 30
+
+[probe]
+pin = !PB15
+x_offset = 0
+y_offset = 25.0
+z_offset = 0.55
+speed = 10.0
+samples = 2
+samples_result = median
+sample_retract_dist = 3.0
+samples_tolerance = 0.05
+samples_tolerance_retries = 1
+
+[printer]
+kinematics = corexy
+max_velocity = 500
+max_accel = 8000
+max_accel_to_decel = 4000
+max_z_velocity = 15
+max_z_accel = 100
+square_corner_velocity = 2.0
+
+[tmc2209 stepper_x]
+uart_pin = PE6
+run_current = 0.8
+hold_current = 0.5
+interpolate = True
+stealthchop_threshold = 400
+
+[tmc2209 stepper_y]
+uart_pin = PE3
+run_current = 0.8
+hold_current = 0.5
+interpolate = True
+stealthchop_threshold = 400
+
+[tmc2209 stepper_z]
+uart_pin = PB7
+run_current = 0.8
+hold_current = 0.5
+interpolate = True
+stealthchop_threshold = 120
+
+[tmc2209 stepper_z1]
+uart_pin = PD4
+interpolate = True
+run_current = 0.8
+hold_current = 0.5
+stealthchop_threshold = 120
+
+[tmc2209 stepper_z2]
+uart_pin = PD0
+interpolate = True
+run_current = 0.8
+hold_current = 0.5
+stealthchop_threshold = 120
+
+[tmc2209 stepper_z3]
+uart_pin = PD15
+interpolate = True
+run_current = 0.8
+hold_current = 0.5
+stealthchop_threshold = 120
+
+[tmc2209 extruder]
+uart_pin = PB3
+run_current = 0.8
+hold_current = 0.5
+interpolate = True
+stealthchop_threshold = 400
+
+[board_pins]
+aliases = 
+	
+	EXP1_1=PB2,  EXP1_3=PE11, EXP1_5=PD9, EXP1_7=PE15, EXP1_9=<GND>,
+	EXP1_2=PE10, EXP1_4=PD10, EXP1_6=PD8, EXP1_8=PE7,  EXP1_10=<5V>,
+	
+	EXP2_1=PA6, EXP2_3=PE9, EXP2_5=PE8, EXP2_7=PD13,  EXP2_9=<GND>,
+	EXP2_2=PA5, EXP2_4=PA4, EXP2_6=PA7, EXP2_8=<RST>, EXP2_10=<3.3v>
+
+[display]
+lcd_type = uc1701
+cs_pin = EXP1_3
+a0_pin = EXP1_4
+rst_pin = EXP1_5
+contrast = 63
+encoder_pins = ^EXP2_5, ^EXP2_3
+click_pin = ^!EXP1_2
+spi_software_miso_pin = EXP2_1
+spi_software_mosi_pin = EXP2_6
+spi_software_sclk_pin = EXP2_2
+
+[output_pin beeper]
+pin = EXP1_1
+
+[neopixel fysetc_mini12864]
+pin = EXP1_6
+chain_count = 3
+color_order = RGB
+initial_red = 1.0
+initial_green = 1.0
+initial_blue = 0.0
+
+[mcu rpi]
+serial = /tmp/klipper_host_mcu
+
+[adxl345]
+cs_pin = rpi:None
+spi_bus = spidev0.0
+
+[resonance_tester]
+accel_chip = adxl345
+probe_points = 
+	100, 100, 20
+
+[input_shaper]
+shaper_freq_x = 68.4
+shaper_type_x = mzv
+shaper_freq_y = 45.6
+shaper_type_y = mzv
+
+[virtual_sdcard]
+path = /home/mks/printer_data/gcodes
+
+[pause_resume]
+
+[gcode_macro CANCEL_PRINT]
+description = Cancel the actual running print
+rename_existing = CANCEL_PRINT_BASE
+gcode = 
+	TURN_OFF_HEATERS
+	CANCEL_PRINT_BASE
+
+[display_status]
+
+[gcode_macro G32]
+gcode = 
+	BED_MESH_CLEAR
+	G28
+	QUAD_GANTRY_LEVEL
+	G2888
+=======================
+Extruder max_extrude_ratio=8.315034
+mcu 'mcu': Starting serial connect
+mcu 'mcu': Unable to open serial port: [Errno 2] could not open port /dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00: [Errno 2] No such file or directory: '/dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00'
+webhooks client 281473080758456: New connection
+Starting Klippy...
+Args: ['/home/mks/klipper/klippy/klippy.py', '/home/mks/printer_data/config/printer.cfg', '-I', '/home/mks/printer_data/comms/klippy.serial', '-l', '/home/mks/printer_data/logs/klippy.log', '-a', '/home/mks/printer_data/comms/klippy.sock']
+Git version: 'v0.11.0-122-ge6ef48cd'
+CPU: 4 core ?
+Python: '3.7.3 (default, Oct 31 2022, 14:04:00) \n[GCC 8.3.0]'
+Start printer at Sat Apr 15 18:21:22 2023 (1681554083.0 25.2)
+===== Config file =====
+[mcu]
+restart_method = command
+serial = /dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00
+
+[stepper_x]
+step_pin = PC14
+dir_pin = !PC13
+enable_pin = !PC15
+microsteps = 16
+rotation_distance = 40
+full_steps_per_rotation = 200
+endstop_pin = PA14
+position_min = 0
+position_endstop = 230
+position_max = 230
+homing_speed = 50
+homing_retract_dist = 5
+homing_positive_dir = true
+step_pulse_duration = 0.000008
+
+[stepper_y]
+step_pin = PE5
+dir_pin = !PE4
+enable_pin = !PD14
+microsteps = 16
+rotation_distance = 40
+full_steps_per_rotation = 200
+endstop_pin = PA15
+position_min = 0
+position_endstop = 230
+position_max = 230
+homing_speed = 50
+homing_retract_dist = 5
+homing_positive_dir = true
+step_pulse_duration = 0.000008
+
+[stepper_z]
+step_pin = PE1
+dir_pin = !PE0
+enable_pin = !PE2
+microsteps = 16
+rotation_distance = 40
+full_steps_per_rotation = 200
+gear_ratio = 80:16
+endstop_pin = probe:z_virtual_endstop
+position_max = 255
+position_min = -5
+homing_speed = 8
+second_homing_speed = 3
+
+[stepper_z1]
+step_pin = PD6
+dir_pin = PD5
+enable_pin = !PD7
+microsteps = 16
+rotation_distance = 40
+full_steps_per_rotation = 200
+gear_ratio = 80:16
+
+[stepper_z2]
+step_pin = PD2
+dir_pin = PD1
+enable_pin = !PD3
+microsteps = 16
+rotation_distance = 40
+full_steps_per_rotation = 200
+gear_ratio = 80:16
+
+[stepper_z3]
+step_pin = PC7
+dir_pin = PC6
+enable_pin = !PC8
+microsteps = 16
+rotation_distance = 40
+full_steps_per_rotation = 200
+gear_ratio = 80:16
+
+[extruder]
+step_pin = PB5
+dir_pin = !PB4
+enable_pin = !PB6
+microsteps = 16
+rotation_distance = 25.12
+gear_ratio = 50:17
+full_steps_per_rotation = 200
+nozzle_diameter = 0.400
+filament_diameter = 1.750
+min_temp = 0
+max_temp = 275
+heater_pin = PB1
+sensor_type = NTC 100K MGB18-104F39050L32
+sensor_pin = PC1
+max_power = 1.0
+control = pid
+pid_kp = 26.213
+pid_ki = 1.304
+pid_kd = 131.721
+pressure_advance = 0.00
+pressure_advance_smooth_time = 0.150
+max_extrude_cross_section = 20
+instantaneous_corner_velocity = 1.000
+max_extrude_only_distance = 50.0
+max_extrude_only_velocity = 5000
+max_extrude_only_accel = 2000
+step_pulse_duration = 0.000004
+
+[fan]
+pin = PA2
+
+[heater_fan fan1]
+pin = PA1
+shutdown_speed = 1
+
+[heater_fan fan2]
+pin = PA0
+shutdown_speed = 1
+
+[idle_timeout]
+timeout = 3600
+
+[safe_z_home]
+home_xy_position = 115,115
+speed = 100
+z_hop = 10
+z_hop_speed = 5
+
+[quad_gantry_level]
+gantry_corners = 
+	-58,-7
+	308,318
+points = 
+	10,10
+	10,200
+	220,200
+	220,10
+speed = 80
+horizontal_move_z = 10
+retries = 1
+retry_tolerance = 0.05
+max_adjust = 30
+
+[probe]
+pin = !PB15
+x_offset = 0
+y_offset = 25.0
+z_offset = 0.55
+speed = 10.0
+samples = 2
+samples_result = median
+sample_retract_dist = 3.0
+samples_tolerance = 0.05
+samples_tolerance_retries = 1
+
+[printer]
+kinematics = corexy
+max_velocity = 500
+max_accel = 8000
+max_accel_to_decel = 4000
+max_z_velocity = 15
+max_z_accel = 100
+square_corner_velocity = 2.0
+
+[tmc2209 stepper_x]
+uart_pin = PE6
+run_current = 0.8
+hold_current = 0.5
+interpolate = True
+stealthchop_threshold = 400
+
+[tmc2209 stepper_y]
+uart_pin = PE3
+run_current = 0.8
+hold_current = 0.5
+interpolate = True
+stealthchop_threshold = 400
+
+[tmc2209 stepper_z]
+uart_pin = PB7
+run_current = 0.8
+hold_current = 0.5
+interpolate = True
+stealthchop_threshold = 120
+
+[tmc2209 stepper_z1]
+uart_pin = PD4
+interpolate = True
+run_current = 0.8
+hold_current = 0.5
+stealthchop_threshold = 120
+
+[tmc2209 stepper_z2]
+uart_pin = PD0
+interpolate = True
+run_current = 0.8
+hold_current = 0.5
+stealthchop_threshold = 120
+
+[tmc2209 stepper_z3]
+uart_pin = PD15
+interpolate = True
+run_current = 0.8
+hold_current = 0.5
+stealthchop_threshold = 120
+
+[tmc2209 extruder]
+uart_pin = PB3
+run_current = 0.8
+hold_current = 0.5
+interpolate = True
+stealthchop_threshold = 400
+
+[board_pins]
+aliases = 
+	
+	EXP1_1=PB2,  EXP1_3=PE11, EXP1_5=PD9, EXP1_7=PE15, EXP1_9=<GND>,
+	EXP1_2=PE10, EXP1_4=PD10, EXP1_6=PD8, EXP1_8=PE7,  EXP1_10=<5V>,
+	
+	EXP2_1=PA6, EXP2_3=PE9, EXP2_5=PE8, EXP2_7=PD13,  EXP2_9=<GND>,
+	EXP2_2=PA5, EXP2_4=PA4, EXP2_6=PA7, EXP2_8=<RST>, EXP2_10=<3.3v>
+
+[display]
+lcd_type = uc1701
+cs_pin = EXP1_3
+a0_pin = EXP1_4
+rst_pin = EXP1_5
+contrast = 63
+encoder_pins = ^EXP2_5, ^EXP2_3
+click_pin = ^!EXP1_2
+spi_software_miso_pin = EXP2_1
+spi_software_mosi_pin = EXP2_6
+spi_software_sclk_pin = EXP2_2
+
+[output_pin beeper]
+pin = EXP1_1
+
+[neopixel fysetc_mini12864]
+pin = EXP1_6
+chain_count = 3
+color_order = RGB
+initial_red = 1.0
+initial_green = 1.0
+initial_blue = 0.0
+
+[mcu rpi]
+serial = /tmp/klipper_host_mcu
+
+[adxl345]
+cs_pin = rpi:None
+spi_bus = spidev0.0
+
+[resonance_tester]
+accel_chip = adxl345
+probe_points = 
+	100, 100, 20
+
+[input_shaper]
+shaper_freq_x = 68.4
+shaper_type_x = mzv
+shaper_freq_y = 45.6
+shaper_type_y = mzv
+
+[virtual_sdcard]
+path = /home/mks/printer_data/gcodes
+
+[pause_resume]
+
+[gcode_macro CANCEL_PRINT]
+description = Cancel the actual running print
+rename_existing = CANCEL_PRINT_BASE
+gcode = 
+	TURN_OFF_HEATERS
+	CANCEL_PRINT_BASE
+
+[display_status]
+
+[gcode_macro G32]
+gcode = 
+	BED_MESH_CLEAR
+	G28
+	QUAD_GANTRY_LEVEL
+	G2888
+=======================
+Extruder max_extrude_ratio=8.315034
+mcu 'mcu': Starting serial connect
+mcu 'mcu': Unable to open serial port: [Errno 2] could not open port /dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00: [Errno 2] No such file or directory: '/dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00'
+webhooks client 281473638355128: New connection
+webhooks client 281473638355128: Client info {'program': 'Moonraker', 'version': 'v0.8.0-23-g18f5ff4'}
+mcu 'mcu': Unable to open serial port: [Errno 2] could not open port /dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00: [Errno 2] No such file or directory: '/dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00'
+mcu 'mcu': Unable to open serial port: [Errno 2] could not open port /dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00: [Errno 2] No such file or directory: '/dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00'
+mcu 'mcu': Unable to open serial port: [Errno 2] could not open port /dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00: [Errno 2] No such file or directory: '/dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00'
+mcu 'mcu': Unable to open serial port: [Errno 2] could not open port /dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00: [Errno 2] No such file or directory: '/dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00'
+mcu 'mcu': Unable to open serial port: [Errno 2] could not open port /dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00: [Errno 2] No such file or directory: '/dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00'
+mcu 'mcu': Unable to open serial port: [Errno 2] could not open port /dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00: [Errno 2] No such file or directory: '/dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00'
+mcu 'mcu': Unable to open serial port: [Errno 2] could not open port /dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00: [Errno 2] No such file or directory: '/dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00'
+mcu 'mcu': Unable to open serial port: [Errno 2] could not open port /dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00: [Errno 2] No such file or directory: '/dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00'
+mcu 'mcu': Unable to open serial port: [Errno 2] could not open port /dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00: [Errno 2] No such file or directory: '/dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00'
+mcu 'mcu': Unable to open serial port: [Errno 2] could not open port /dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00: [Errno 2] No such file or directory: '/dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00'
+mcu 'mcu': Unable to open serial port: [Errno 2] could not open port /dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00: [Errno 2] No such file or directory: '/dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00'
+mcu 'mcu': Unable to open serial port: [Errno 2] could not open port /dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00: [Errno 2] No such file or directory: '/dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00'
+mcu 'mcu': Unable to open serial port: [Errno 2] could not open port /dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00: [Errno 2] No such file or directory: '/dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00'
+mcu 'mcu': Unable to open serial port: [Errno 2] could not open port /dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00: [Errno 2] No such file or directory: '/dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00'
+mcu 'mcu': Unable to open serial port: [Errno 2] could not open port /dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00: [Errno 2] No such file or directory: '/dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00'
+mcu 'mcu': Unable to open serial port: [Errno 2] could not open port /dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00: [Errno 2] No such file or directory: '/dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00'
+mcu 'mcu': Unable to open serial port: [Errno 2] could not open port /dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00: [Errno 2] No such file or directory: '/dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00'
+MCU error during connect
+Traceback (most recent call last):
+  File "/home/mks/klipper/klippy/mcu.py", line 798, in _mcu_identify
+    self._serial.connect_uart(self._serialport, self._baud, rts)
+  File "/home/mks/klipper/klippy/serialhdl.py", line 182, in connect_uart
+    self._error("Unable to connect")
+  File "/home/mks/klipper/klippy/serialhdl.py", line 61, in _error
+    raise error(self.warn_prefix + (msg % params))
+serialhdl.error: mcu 'mcu': Unable to connect
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/mks/klipper/klippy/klippy.py", line 176, in _connect
+    self.send_event("klippy:mcu_identify")
+  File "/home/mks/klipper/klippy/klippy.py", line 263, in send_event
+    return [cb(*params) for cb in self.event_handlers.get(event, [])]
+  File "/home/mks/klipper/klippy/klippy.py", line 263, in <listcomp>
+    return [cb(*params) for cb in self.event_handlers.get(event, [])]
+  File "/home/mks/klipper/klippy/mcu.py", line 803, in _mcu_identify
+    raise error(str(e))
+mcu.error: mcu 'mcu': Unable to connect
+Build file /home/mks/klipper/klippy/../.config(3223): Sun Mar  5 17:11:05 2023
+========= Last MCU build config =========
+CONFIG_LOW_LEVEL_OPTIONS=y
+# CONFIG_MACH_AVR is not set
+# CONFIG_MACH_ATSAM is not set
+# CONFIG_MACH_ATSAMD is not set
+# CONFIG_MACH_LPC176X is not set
+CONFIG_MACH_STM32=y
+# CONFIG_MACH_HC32F460 is not set
+# CONFIG_MACH_RP2040 is not set
+# CONFIG_MACH_PRU is not set
+# CONFIG_MACH_AR100 is not set
+# CONFIG_MACH_LINUX is not set
+# CONFIG_MACH_SIMU is not set
+CONFIG_BOARD_DIRECTORY="stm32"
+CONFIG_MCU="stm32f407xx"
+CONFIG_CLOCK_FREQ=168000000
+CONFIG_USBSERIAL=y
+CONFIG_FLASH_SIZE=0x80000
+CONFIG_FLASH_BOOT_ADDRESS=0x8000000
+CONFIG_RAM_START=0x20000000
+CONFIG_RAM_SIZE=0x20000
+CONFIG_STACK_SIZE=512
+CONFIG_FLASH_APPLICATION_ADDRESS=0x800C000
+CONFIG_STM32_SELECT=y
+# CONFIG_MACH_STM32F103 is not set
+# CONFIG_MACH_STM32F207 is not set
+# CONFIG_MACH_STM32F401 is not set
+# CONFIG_MACH_STM32F405 is not set
+CONFIG_MACH_STM32F407=y
+# CONFIG_MACH_STM32F429 is not set
+# CONFIG_MACH_STM32F446 is not set
+# CONFIG_MACH_STM32F031 is not set
+# CONFIG_MACH_STM32F042 is not set
+# CONFIG_MACH_STM32F070 is not set
+# CONFIG_MACH_STM32F072 is not set
+# CONFIG_MACH_STM32G070 is not set
+# CONFIG_MACH_STM32G071 is not set
+# CONFIG_MACH_STM32G0B0 is not set
+# CONFIG_MACH_STM32G0B1 is not set
+# CONFIG_MACH_STM32G431 is not set
+# CONFIG_MACH_STM32H723 is not set
+# CONFIG_MACH_STM32H743 is not set
+# CONFIG_MACH_STM32H750 is not set
+# CONFIG_MACH_STM32L412 is not set
+CONFIG_MACH_STM32F4=y
+CONFIG_MACH_STM32F4x5=y
+CONFIG_HAVE_STM32_USBOTG=y
+CONFIG_HAVE_STM32_CANBUS=y
+CONFIG_HAVE_STM32_USBCANBUS=y
+CONFIG_STM32_DFU_ROM_ADDRESS=0x1fff0000
+# CONFIG_STM32_FLASH_START_8000 is not set
+# CONFIG_STM32_FLASH_START_20200 is not set
+CONFIG_STM32_FLASH_START_C000=y
+# CONFIG_STM32_FLASH_START_4000 is not set
+# CONFIG_STM32_FLASH_START_0000 is not set
+CONFIG_STM32_CLOCK_REF_8M=y
+# CONFIG_STM32_CLOCK_REF_12M is not set
+# CONFIG_STM32_CLOCK_REF_16M is not set
+# CONFIG_STM32_CLOCK_REF_20M is not set
+# CONFIG_STM32_CLOCK_REF_25M is not set
+# CONFIG_STM32_CLOCK_REF_INTERNAL is not set
+CONFIG_CLOCK_REF_FREQ=8000000
+CONFIG_STM32F0_TRIM=16
+CONFIG_STM32_USB_PA11_PA12=y
+# CONFIG_STM32_SERIAL_USART1 is not set
+# CONFIG_STM32_SERIAL_USART1_ALT_PB7_PB6 is not set
+# CONFIG_STM32_SERIAL_USART2 is not set
+# CONFIG_STM32_SERIAL_USART2_ALT_PD6_PD5 is not set
+# CONFIG_STM32_SERIAL_USART3 is not set
+# CONFIG_STM32_SERIAL_USART3_ALT_PD9_PD8 is not set
+# CONFIG_STM32_CANBUS_PA11_PA12 is not set
+# CONFIG_STM32_CANBUS_PA11_PB9 is not set
+# CONFIG_STM32_MMENU_CANBUS_PB8_PB9 is not set
+# CONFIG_STM32_MMENU_CANBUS_PI9_PH13 is not set
+# CONFIG_STM32_MMENU_CANBUS_PB5_PB6 is not set
+# CONFIG_STM32_MMENU_CANBUS_PB12_PB13 is not set
+# CONFIG_STM32_MMENU_CANBUS_PD0_PD1 is not set
+# CONFIG_STM32_USBCANBUS_PA11_PA12 is not set
+CONFIG_USB=y
+CONFIG_USB_VENDOR_ID=0x1d50
+CONFIG_USB_DEVICE_ID=0x614e
+CONFIG_USB_SERIAL_NUMBER_CHIPID=y
+CONFIG_USB_SERIAL_NUMBER="12345"
+
+#
+# USB ids
+#
+# end of USB ids
+
+CONFIG_CANBUS_FREQUENCY=500000
+CONFIG_INITIAL_PINS=""
+CONFIG_HAVE_GPIO=y
+CONFIG_HAVE_GPIO_ADC=y
+CONFIG_HAVE_GPIO_SPI=y
+CONFIG_HAVE_GPIO_SDIO=y
+CONFIG_HAVE_GPIO_I2C=y
+CONFIG_HAVE_GPIO_HARD_PWM=y
+CONFIG_HAVE_GPIO_BITBANGING=y
+CONFIG_HAVE_STRICT_TIMING=y
+CONFIG_HAVE_CHIPID=y
+CONFIG_HAVE_STEPPER_BOTH_EDGE=y
+CONFIG_HAVE_BOOTLOADER_REQUEST=y
+CONFIG_INLINE_STEPPER_HACK=y
+=======================
+Build file /home/mks/klipper/klippy/../out/klipper.dict(8495): Sun Mar  5 17:11:35 2023
+Last MCU build version: ?-20230305_171135-mkspi
+Last MCU build tools: gcc: (15:7-2018-q2-6) 7.3.1 20180622 (release) [ARM/embedded-7-branch revision 261907] binutils: (2.31.1-12+11) 2.31.1
+Last MCU build config: ADC_MAX=4095 BUS_PINS_i2c1=PB6,PB7 BUS_PINS_i2c1a=PB8,PB9 BUS_PINS_i2c2=PB10,PB11 BUS_PINS_i2c2a=PH4,PH5 BUS_PINS_i2c3=PA8,PC9 BUS_PINS_i2c3a=PH7,PH8 BUS_PINS_sdio=PC12,PD2,PC8,PC9,PC10,PC11 BUS_PINS_spi1=PA6,PA7,PA5 BUS_PINS_spi1a=PB4,PB5,PB3 BUS_PINS_spi2=PB14,PB15,PB13 BUS_PINS_spi2a=PC2,PC3,PB10 BUS_PINS_spi2b=PI2,PI3,PI1 BUS_PINS_spi3=PB4,PB5,PB3 BUS_PINS_spi3a=PC11,PC12,PC10 CLOCK_FREQ=168000000 MCU=stm32f407xx PWM_MAX=255 RESERVE_PINS_USB=PA11,PA12 RESERVE_PINS_crystal=PH0,PH1 STATS_SUMSQ_BASE=256 STEPPER_BOTH_EDGE=1
+Build file /home/mks/klipper/klippy/../out/klipper.elf(377440): Sun Mar  5 17:11:46 2023
+Starting Klippy...
+Args: ['/home/mks/klipper/klippy/klippy.py', '/home/mks/printer_data/config/printer.cfg', '-I', '/home/mks/printer_data/comms/klippy.serial', '-l', '/home/mks/printer_data/logs/klippy.log', '-a', '/home/mks/printer_data/comms/klippy.sock']
+Git version: 'v0.11.0-122-ge6ef48cd'
+CPU: 4 core ?
+Python: '3.7.3 (default, Oct 31 2022, 14:04:00) \n[GCC 8.3.0]'
+Start printer at Sat Apr 15 18:27:57 2023 (1681554477.5 25.4)
+===== Config file =====
+[mcu]
+restart_method = command
+serial = /dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00
+
+[stepper_x]
+step_pin = PC14
+dir_pin = !PC13
+enable_pin = !PC15
+microsteps = 16
+rotation_distance = 40
+full_steps_per_rotation = 200
+endstop_pin = PA14
+position_min = 0
+position_endstop = 230
+position_max = 230
+homing_speed = 50
+homing_retract_dist = 5
+homing_positive_dir = true
+step_pulse_duration = 0.000008
+
+[stepper_y]
+step_pin = PE5
+dir_pin = !PE4
+enable_pin = !PD14
+microsteps = 16
+rotation_distance = 40
+full_steps_per_rotation = 200
+endstop_pin = PA15
+position_min = 0
+position_endstop = 230
+position_max = 230
+homing_speed = 50
+homing_retract_dist = 5
+homing_positive_dir = true
+step_pulse_duration = 0.000008
+
+[stepper_z]
+step_pin = PE1
+dir_pin = !PE0
+enable_pin = !PE2
+microsteps = 16
+rotation_distance = 40
+full_steps_per_rotation = 200
+gear_ratio = 80:16
+endstop_pin = probe:z_virtual_endstop
+position_max = 255
+position_min = -5
+homing_speed = 8
+second_homing_speed = 3
+
+[stepper_z1]
+step_pin = PD6
+dir_pin = PD5
+enable_pin = !PD7
+microsteps = 16
+rotation_distance = 40
+full_steps_per_rotation = 200
+gear_ratio = 80:16
+
+[stepper_z2]
+step_pin = PD2
+dir_pin = PD1
+enable_pin = !PD3
+microsteps = 16
+rotation_distance = 40
+full_steps_per_rotation = 200
+gear_ratio = 80:16
+
+[stepper_z3]
+step_pin = PC7
+dir_pin = PC6
+enable_pin = !PC8
+microsteps = 16
+rotation_distance = 40
+full_steps_per_rotation = 200
+gear_ratio = 80:16
+
+[extruder]
+step_pin = PB5
+dir_pin = !PB4
+enable_pin = !PB6
+microsteps = 16
+rotation_distance = 25.12
+gear_ratio = 50:17
+full_steps_per_rotation = 200
+nozzle_diameter = 0.400
+filament_diameter = 1.750
+min_temp = 0
+max_temp = 275
+heater_pin = PB1
+sensor_type = NTC 100K MGB18-104F39050L32
+sensor_pin = PC1
+max_power = 1.0
+control = pid
+pid_kp = 26.213
+pid_ki = 1.304
+pid_kd = 131.721
+pressure_advance = 0.00
+pressure_advance_smooth_time = 0.150
+max_extrude_cross_section = 20
+instantaneous_corner_velocity = 1.000
+max_extrude_only_distance = 50.0
+max_extrude_only_velocity = 5000
+max_extrude_only_accel = 2000
+step_pulse_duration = 0.000004
+
+[fan]
+pin = PA2
+
+[heater_fan fan1]
+pin = PA1
+shutdown_speed = 1
+
+[heater_fan fan2]
+pin = PA0
+shutdown_speed = 1
+
+[idle_timeout]
+timeout = 3600
+
+[safe_z_home]
+home_xy_position = 115,115
+speed = 100
+z_hop = 10
+z_hop_speed = 5
+
+[quad_gantry_level]
+gantry_corners = 
+	-58,-7
+	308,318
+points = 
+	10,10
+	10,200
+	220,200
+	220,10
+speed = 80
+horizontal_move_z = 10
+retries = 1
+retry_tolerance = 0.05
+max_adjust = 30
+
+[probe]
+pin = !PB15
+x_offset = 0
+y_offset = 25.0
+z_offset = 0.55
+speed = 10.0
+samples = 2
+samples_result = median
+sample_retract_dist = 3.0
+samples_tolerance = 0.05
+samples_tolerance_retries = 1
+
+[printer]
+kinematics = corexy
+max_velocity = 500
+max_accel = 8000
+max_accel_to_decel = 4000
+max_z_velocity = 15
+max_z_accel = 100
+square_corner_velocity = 2.0
+
+[tmc2209 stepper_x]
+uart_pin = PE6
+run_current = 0.8
+hold_current = 0.5
+interpolate = True
+stealthchop_threshold = 400
+
+[tmc2209 stepper_y]
+uart_pin = PE3
+run_current = 0.8
+hold_current = 0.5
+interpolate = True
+stealthchop_threshold = 400
+
+[tmc2209 stepper_z]
+uart_pin = PB7
+run_current = 0.8
+hold_current = 0.5
+interpolate = True
+stealthchop_threshold = 120
+
+[tmc2209 stepper_z1]
+uart_pin = PD4
+interpolate = True
+run_current = 0.8
+hold_current = 0.5
+stealthchop_threshold = 120
+
+[tmc2209 stepper_z2]
+uart_pin = PD0
+interpolate = True
+run_current = 0.8
+hold_current = 0.5
+stealthchop_threshold = 120
+
+[tmc2209 stepper_z3]
+uart_pin = PD15
+interpolate = True
+run_current = 0.8
+hold_current = 0.5
+stealthchop_threshold = 120
+
+[tmc2209 extruder]
+uart_pin = PB3
+run_current = 0.8
+hold_current = 0.5
+interpolate = True
+stealthchop_threshold = 400
+
+[board_pins]
+aliases = 
+	
+	EXP1_1=PB2,  EXP1_3=PE11, EXP1_5=PD9, EXP1_7=PE15, EXP1_9=<GND>,
+	EXP1_2=PE10, EXP1_4=PD10, EXP1_6=PD8, EXP1_8=PE7,  EXP1_10=<5V>,
+	
+	EXP2_1=PA6, EXP2_3=PE9, EXP2_5=PE8, EXP2_7=PD13,  EXP2_9=<GND>,
+	EXP2_2=PA5, EXP2_4=PA4, EXP2_6=PA7, EXP2_8=<RST>, EXP2_10=<3.3v>
+
+[display]
+lcd_type = uc1701
+cs_pin = EXP1_3
+a0_pin = EXP1_4
+rst_pin = EXP1_5
+contrast = 63
+encoder_pins = ^EXP2_5, ^EXP2_3
+click_pin = ^!EXP1_2
+spi_software_miso_pin = EXP2_1
+spi_software_mosi_pin = EXP2_6
+spi_software_sclk_pin = EXP2_2
+
+[output_pin beeper]
+pin = EXP1_1
+
+[neopixel fysetc_mini12864]
+pin = EXP1_6
+chain_count = 3
+color_order = RGB
+initial_red = 1.0
+initial_green = 1.0
+initial_blue = 0.0
+
+[mcu rpi]
+serial = /tmp/klipper_host_mcu
+
+[adxl345]
+cs_pin = rpi:None
+spi_bus = spidev0.0
+
+[resonance_tester]
+accel_chip = adxl345
+probe_points = 
+	100, 100, 20
+
+[input_shaper]
+shaper_freq_x = 68.4
+shaper_type_x = mzv
+shaper_freq_y = 45.6
+shaper_type_y = mzv
+
+[virtual_sdcard]
+path = /home/mks/printer_data/gcodes
+
+[pause_resume]
+
+[gcode_macro CANCEL_PRINT]
+description = Cancel the actual running print
+rename_existing = CANCEL_PRINT_BASE
+gcode = 
+	TURN_OFF_HEATERS
+	CANCEL_PRINT_BASE
+
+[display_status]
+
+[gcode_macro G32]
+gcode = 
+	BED_MESH_CLEAR
+	G28
+	QUAD_GANTRY_LEVEL
+	G2888
+=======================
+Extruder max_extrude_ratio=8.315034
+mcu 'mcu': Starting serial connect
+mcu 'mcu': Unable to open serial port: [Errno 2] could not open port /dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00: [Errno 2] No such file or directory: '/dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00'
+webhooks client 281473781727416: New connection
+webhooks client 281473781727416: Client info {'program': 'Moonraker', 'version': 'v0.8.0-23-g18f5ff4-dirty'}
+mcu 'mcu': Unable to open serial port: [Errno 2] could not open port /dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00: [Errno 2] No such file or directory: '/dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00'
+mcu 'mcu': Unable to open serial port: [Errno 2] could not open port /dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00: [Errno 2] No such file or directory: '/dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00'
+mcu 'mcu': Unable to open serial port: [Errno 2] could not open port /dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00: [Errno 2] No such file or directory: '/dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00'
+mcu 'mcu': Unable to open serial port: [Errno 2] could not open port /dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00: [Errno 2] No such file or directory: '/dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00'
+mcu 'mcu': Unable to open serial port: [Errno 2] could not open port /dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00: [Errno 2] No such file or directory: '/dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00'
+mcu 'mcu': Unable to open serial port: [Errno 2] could not open port /dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00: [Errno 2] No such file or directory: '/dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00'
+mcu 'mcu': Unable to open serial port: [Errno 2] could not open port /dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00: [Errno 2] No such file or directory: '/dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00'
+mcu 'mcu': Unable to open serial port: [Errno 2] could not open port /dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00: [Errno 2] No such file or directory: '/dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00'
+mcu 'mcu': Unable to open serial port: [Errno 2] could not open port /dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00: [Errno 2] No such file or directory: '/dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00'
+mcu 'mcu': Unable to open serial port: [Errno 2] could not open port /dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00: [Errno 2] No such file or directory: '/dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00'
+mcu 'mcu': Unable to open serial port: [Errno 2] could not open port /dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00: [Errno 2] No such file or directory: '/dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00'
+mcu 'mcu': Unable to open serial port: [Errno 2] could not open port /dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00: [Errno 2] No such file or directory: '/dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00'
+mcu 'mcu': Unable to open serial port: [Errno 2] could not open port /dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00: [Errno 2] No such file or directory: '/dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00'
+mcu 'mcu': Unable to open serial port: [Errno 2] could not open port /dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00: [Errno 2] No such file or directory: '/dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00'
+mcu 'mcu': Unable to open serial port: [Errno 2] could not open port /dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00: [Errno 2] No such file or directory: '/dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00'
+mcu 'mcu': Unable to open serial port: [Errno 2] could not open port /dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00: [Errno 2] No such file or directory: '/dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00'
+mcu 'mcu': Unable to open serial port: [Errno 2] could not open port /dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00: [Errno 2] No such file or directory: '/dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00'
+MCU error during connect
+Traceback (most recent call last):
+  File "/home/mks/klipper/klippy/mcu.py", line 798, in _mcu_identify
+    self._serial.connect_uart(self._serialport, self._baud, rts)
+  File "/home/mks/klipper/klippy/serialhdl.py", line 182, in connect_uart
+    self._error("Unable to connect")
+  File "/home/mks/klipper/klippy/serialhdl.py", line 61, in _error
+    raise error(self.warn_prefix + (msg % params))
+serialhdl.error: mcu 'mcu': Unable to connect
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/mks/klipper/klippy/klippy.py", line 176, in _connect
+    self.send_event("klippy:mcu_identify")
+  File "/home/mks/klipper/klippy/klippy.py", line 263, in send_event
+    return [cb(*params) for cb in self.event_handlers.get(event, [])]
+  File "/home/mks/klipper/klippy/klippy.py", line 263, in <listcomp>
+    return [cb(*params) for cb in self.event_handlers.get(event, [])]
+  File "/home/mks/klipper/klippy/mcu.py", line 803, in _mcu_identify
+    raise error(str(e))
+mcu.error: mcu 'mcu': Unable to connect
+Build file /home/mks/klipper/klippy/../.config(3223): Sun Mar  5 17:11:05 2023
+========= Last MCU build config =========
+CONFIG_LOW_LEVEL_OPTIONS=y
+# CONFIG_MACH_AVR is not set
+# CONFIG_MACH_ATSAM is not set
+# CONFIG_MACH_ATSAMD is not set
+# CONFIG_MACH_LPC176X is not set
+CONFIG_MACH_STM32=y
+# CONFIG_MACH_HC32F460 is not set
+# CONFIG_MACH_RP2040 is not set
+# CONFIG_MACH_PRU is not set
+# CONFIG_MACH_AR100 is not set
+# CONFIG_MACH_LINUX is not set
+# CONFIG_MACH_SIMU is not set
+CONFIG_BOARD_DIRECTORY="stm32"
+CONFIG_MCU="stm32f407xx"
+CONFIG_CLOCK_FREQ=168000000
+CONFIG_USBSERIAL=y
+CONFIG_FLASH_SIZE=0x80000
+CONFIG_FLASH_BOOT_ADDRESS=0x8000000
+CONFIG_RAM_START=0x20000000
+CONFIG_RAM_SIZE=0x20000
+CONFIG_STACK_SIZE=512
+CONFIG_FLASH_APPLICATION_ADDRESS=0x800C000
+CONFIG_STM32_SELECT=y
+# CONFIG_MACH_STM32F103 is not set
+# CONFIG_MACH_STM32F207 is not set
+# CONFIG_MACH_STM32F401 is not set
+# CONFIG_MACH_STM32F405 is not set
+CONFIG_MACH_STM32F407=y
+# CONFIG_MACH_STM32F429 is not set
+# CONFIG_MACH_STM32F446 is not set
+# CONFIG_MACH_STM32F031 is not set
+# CONFIG_MACH_STM32F042 is not set
+# CONFIG_MACH_STM32F070 is not set
+# CONFIG_MACH_STM32F072 is not set
+# CONFIG_MACH_STM32G070 is not set
+# CONFIG_MACH_STM32G071 is not set
+# CONFIG_MACH_STM32G0B0 is not set
+# CONFIG_MACH_STM32G0B1 is not set
+# CONFIG_MACH_STM32G431 is not set
+# CONFIG_MACH_STM32H723 is not set
+# CONFIG_MACH_STM32H743 is not set
+# CONFIG_MACH_STM32H750 is not set
+# CONFIG_MACH_STM32L412 is not set
+CONFIG_MACH_STM32F4=y
+CONFIG_MACH_STM32F4x5=y
+CONFIG_HAVE_STM32_USBOTG=y
+CONFIG_HAVE_STM32_CANBUS=y
+CONFIG_HAVE_STM32_USBCANBUS=y
+CONFIG_STM32_DFU_ROM_ADDRESS=0x1fff0000
+# CONFIG_STM32_FLASH_START_8000 is not set
+# CONFIG_STM32_FLASH_START_20200 is not set
+CONFIG_STM32_FLASH_START_C000=y
+# CONFIG_STM32_FLASH_START_4000 is not set
+# CONFIG_STM32_FLASH_START_0000 is not set
+CONFIG_STM32_CLOCK_REF_8M=y
+# CONFIG_STM32_CLOCK_REF_12M is not set
+# CONFIG_STM32_CLOCK_REF_16M is not set
+# CONFIG_STM32_CLOCK_REF_20M is not set
+# CONFIG_STM32_CLOCK_REF_25M is not set
+# CONFIG_STM32_CLOCK_REF_INTERNAL is not set
+CONFIG_CLOCK_REF_FREQ=8000000
+CONFIG_STM32F0_TRIM=16
+CONFIG_STM32_USB_PA11_PA12=y
+# CONFIG_STM32_SERIAL_USART1 is not set
+# CONFIG_STM32_SERIAL_USART1_ALT_PB7_PB6 is not set
+# CONFIG_STM32_SERIAL_USART2 is not set
+# CONFIG_STM32_SERIAL_USART2_ALT_PD6_PD5 is not set
+# CONFIG_STM32_SERIAL_USART3 is not set
+# CONFIG_STM32_SERIAL_USART3_ALT_PD9_PD8 is not set
+# CONFIG_STM32_CANBUS_PA11_PA12 is not set
+# CONFIG_STM32_CANBUS_PA11_PB9 is not set
+# CONFIG_STM32_MMENU_CANBUS_PB8_PB9 is not set
+# CONFIG_STM32_MMENU_CANBUS_PI9_PH13 is not set
+# CONFIG_STM32_MMENU_CANBUS_PB5_PB6 is not set
+# CONFIG_STM32_MMENU_CANBUS_PB12_PB13 is not set
+# CONFIG_STM32_MMENU_CANBUS_PD0_PD1 is not set
+# CONFIG_STM32_USBCANBUS_PA11_PA12 is not set
+CONFIG_USB=y
+CONFIG_USB_VENDOR_ID=0x1d50
+CONFIG_USB_DEVICE_ID=0x614e
+CONFIG_USB_SERIAL_NUMBER_CHIPID=y
+CONFIG_USB_SERIAL_NUMBER="12345"
+
+#
+# USB ids
+#
+# end of USB ids
+
+CONFIG_CANBUS_FREQUENCY=500000
+CONFIG_INITIAL_PINS=""
+CONFIG_HAVE_GPIO=y
+CONFIG_HAVE_GPIO_ADC=y
+CONFIG_HAVE_GPIO_SPI=y
+CONFIG_HAVE_GPIO_SDIO=y
+CONFIG_HAVE_GPIO_I2C=y
+CONFIG_HAVE_GPIO_HARD_PWM=y
+CONFIG_HAVE_GPIO_BITBANGING=y
+CONFIG_HAVE_STRICT_TIMING=y
+CONFIG_HAVE_CHIPID=y
+CONFIG_HAVE_STEPPER_BOTH_EDGE=y
+CONFIG_HAVE_BOOTLOADER_REQUEST=y
+CONFIG_INLINE_STEPPER_HACK=y
+=======================
+Build file /home/mks/klipper/klippy/../out/klipper.dict(8495): Sun Mar  5 17:11:35 2023
+Last MCU build version: ?-20230305_171135-mkspi
+Last MCU build tools: gcc: (15:7-2018-q2-6) 7.3.1 20180622 (release) [ARM/embedded-7-branch revision 261907] binutils: (2.31.1-12+11) 2.31.1
+Last MCU build config: ADC_MAX=4095 BUS_PINS_i2c1=PB6,PB7 BUS_PINS_i2c1a=PB8,PB9 BUS_PINS_i2c2=PB10,PB11 BUS_PINS_i2c2a=PH4,PH5 BUS_PINS_i2c3=PA8,PC9 BUS_PINS_i2c3a=PH7,PH8 BUS_PINS_sdio=PC12,PD2,PC8,PC9,PC10,PC11 BUS_PINS_spi1=PA6,PA7,PA5 BUS_PINS_spi1a=PB4,PB5,PB3 BUS_PINS_spi2=PB14,PB15,PB13 BUS_PINS_spi2a=PC2,PC3,PB10 BUS_PINS_spi2b=PI2,PI3,PI1 BUS_PINS_spi3=PB4,PB5,PB3 BUS_PINS_spi3a=PC11,PC12,PC10 CLOCK_FREQ=168000000 MCU=stm32f407xx PWM_MAX=255 RESERVE_PINS_USB=PA11,PA12 RESERVE_PINS_crystal=PH0,PH1 STATS_SUMSQ_BASE=256 STEPPER_BOTH_EDGE=1
+Build file /home/mks/klipper/klippy/../out/klipper.elf(377440): Sun Mar  5 17:11:46 2023
+Starting Klippy...
+Args: ['/home/mks/klipper/klippy/klippy.py', '/home/mks/printer_data/config/printer.cfg', '-I', '/home/mks/printer_data/comms/klippy.serial', '-l', '/home/mks/printer_data/logs/klippy.log', '-a', '/home/mks/printer_data/comms/klippy.sock']
+Git version: 'v0.11.0-122-ge6ef48cd'
+CPU: 4 core ?
+Python: '3.7.3 (default, Oct 31 2022, 14:04:00) \n[GCC 8.3.0]'
+Start printer at Sat Apr 15 18:27:57 2023 (1681554477.7 25.6)
+===== Config file =====
+[mcu]
+restart_method = command
+serial = /dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00
+
+[stepper_x]
+step_pin = PC14
+dir_pin = !PC13
+enable_pin = !PC15
+microsteps = 16
+rotation_distance = 40
+full_steps_per_rotation = 200
+endstop_pin = PA14
+position_min = 0
+position_endstop = 230
+position_max = 230
+homing_speed = 50
+homing_retract_dist = 5
+homing_positive_dir = true
+step_pulse_duration = 0.000008
+
+[stepper_y]
+step_pin = PE5
+dir_pin = !PE4
+enable_pin = !PD14
+microsteps = 16
+rotation_distance = 40
+full_steps_per_rotation = 200
+endstop_pin = PA15
+position_min = 0
+position_endstop = 230
+position_max = 230
+homing_speed = 50
+homing_retract_dist = 5
+homing_positive_dir = true
+step_pulse_duration = 0.000008
+
+[stepper_z]
+step_pin = PE1
+dir_pin = !PE0
+enable_pin = !PE2
+microsteps = 16
+rotation_distance = 40
+full_steps_per_rotation = 200
+gear_ratio = 80:16
+endstop_pin = probe:z_virtual_endstop
+position_max = 255
+position_min = -5
+homing_speed = 8
+second_homing_speed = 3
+
+[stepper_z1]
+step_pin = PD6
+dir_pin = PD5
+enable_pin = !PD7
+microsteps = 16
+rotation_distance = 40
+full_steps_per_rotation = 200
+gear_ratio = 80:16
+
+[stepper_z2]
+step_pin = PD2
+dir_pin = PD1
+enable_pin = !PD3
+microsteps = 16
+rotation_distance = 40
+full_steps_per_rotation = 200
+gear_ratio = 80:16
+
+[stepper_z3]
+step_pin = PC7
+dir_pin = PC6
+enable_pin = !PC8
+microsteps = 16
+rotation_distance = 40
+full_steps_per_rotation = 200
+gear_ratio = 80:16
+
+[extruder]
+step_pin = PB5
+dir_pin = !PB4
+enable_pin = !PB6
+microsteps = 16
+rotation_distance = 25.12
+gear_ratio = 50:17
+full_steps_per_rotation = 200
+nozzle_diameter = 0.400
+filament_diameter = 1.750
+min_temp = 0
+max_temp = 275
+heater_pin = PB1
+sensor_type = NTC 100K MGB18-104F39050L32
+sensor_pin = PC1
+max_power = 1.0
+control = pid
+pid_kp = 26.213
+pid_ki = 1.304
+pid_kd = 131.721
+pressure_advance = 0.00
+pressure_advance_smooth_time = 0.150
+max_extrude_cross_section = 20
+instantaneous_corner_velocity = 1.000
+max_extrude_only_distance = 50.0
+max_extrude_only_velocity = 5000
+max_extrude_only_accel = 2000
+step_pulse_duration = 0.000004
+
+[fan]
+pin = PA2
+
+[heater_fan fan1]
+pin = PA1
+shutdown_speed = 1
+
+[heater_fan fan2]
+pin = PA0
+shutdown_speed = 1
+
+[idle_timeout]
+timeout = 3600
+
+[safe_z_home]
+home_xy_position = 115,115
+speed = 100
+z_hop = 10
+z_hop_speed = 5
+
+[quad_gantry_level]
+gantry_corners = 
+	-58,-7
+	308,318
+points = 
+	10,10
+	10,200
+	220,200
+	220,10
+speed = 80
+horizontal_move_z = 10
+retries = 1
+retry_tolerance = 0.05
+max_adjust = 30
+
+[probe]
+pin = !PB15
+x_offset = 0
+y_offset = 25.0
+z_offset = 0.55
+speed = 10.0
+samples = 2
+samples_result = median
+sample_retract_dist = 3.0
+samples_tolerance = 0.05
+samples_tolerance_retries = 1
+
+[printer]
+kinematics = corexy
+max_velocity = 500
+max_accel = 8000
+max_accel_to_decel = 4000
+max_z_velocity = 15
+max_z_accel = 100
+square_corner_velocity = 2.0
+
+[tmc2209 stepper_x]
+uart_pin = PE6
+run_current = 0.8
+hold_current = 0.5
+interpolate = True
+stealthchop_threshold = 400
+
+[tmc2209 stepper_y]
+uart_pin = PE3
+run_current = 0.8
+hold_current = 0.5
+interpolate = True
+stealthchop_threshold = 400
+
+[tmc2209 stepper_z]
+uart_pin = PB7
+run_current = 0.8
+hold_current = 0.5
+interpolate = True
+stealthchop_threshold = 120
+
+[tmc2209 stepper_z1]
+uart_pin = PD4
+interpolate = True
+run_current = 0.8
+hold_current = 0.5
+stealthchop_threshold = 120
+
+[tmc2209 stepper_z2]
+uart_pin = PD0
+interpolate = True
+run_current = 0.8
+hold_current = 0.5
+stealthchop_threshold = 120
+
+[tmc2209 stepper_z3]
+uart_pin = PD15
+interpolate = True
+run_current = 0.8
+hold_current = 0.5
+stealthchop_threshold = 120
+
+[tmc2209 extruder]
+uart_pin = PB3
+run_current = 0.8
+hold_current = 0.5
+interpolate = True
+stealthchop_threshold = 400
+
+[board_pins]
+aliases = 
+	
+	EXP1_1=PB2,  EXP1_3=PE11, EXP1_5=PD9, EXP1_7=PE15, EXP1_9=<GND>,
+	EXP1_2=PE10, EXP1_4=PD10, EXP1_6=PD8, EXP1_8=PE7,  EXP1_10=<5V>,
+	
+	EXP2_1=PA6, EXP2_3=PE9, EXP2_5=PE8, EXP2_7=PD13,  EXP2_9=<GND>,
+	EXP2_2=PA5, EXP2_4=PA4, EXP2_6=PA7, EXP2_8=<RST>, EXP2_10=<3.3v>
+
+[display]
+lcd_type = uc1701
+cs_pin = EXP1_3
+a0_pin = EXP1_4
+rst_pin = EXP1_5
+contrast = 63
+encoder_pins = ^EXP2_5, ^EXP2_3
+click_pin = ^!EXP1_2
+spi_software_miso_pin = EXP2_1
+spi_software_mosi_pin = EXP2_6
+spi_software_sclk_pin = EXP2_2
+
+[output_pin beeper]
+pin = EXP1_1
+
+[neopixel fysetc_mini12864]
+pin = EXP1_6
+chain_count = 3
+color_order = RGB
+initial_red = 1.0
+initial_green = 1.0
+initial_blue = 0.0
+
+[mcu rpi]
+serial = /tmp/klipper_host_mcu
+
+[adxl345]
+cs_pin = rpi:None
+spi_bus = spidev0.0
+
+[resonance_tester]
+accel_chip = adxl345
+probe_points = 
+	100, 100, 20
+
+[input_shaper]
+shaper_freq_x = 68.4
+shaper_type_x = mzv
+shaper_freq_y = 45.6
+shaper_type_y = mzv
+
+[virtual_sdcard]
+path = /home/mks/printer_data/gcodes
+
+[pause_resume]
+
+[gcode_macro CANCEL_PRINT]
+description = Cancel the actual running print
+rename_existing = CANCEL_PRINT_BASE
+gcode = 
+	TURN_OFF_HEATERS
+	CANCEL_PRINT_BASE
+
+[display_status]
+
+[gcode_macro G32]
+gcode = 
+	BED_MESH_CLEAR
+	G28
+	QUAD_GANTRY_LEVEL
+	G2888
+=======================
+Extruder max_extrude_ratio=8.315034
+mcu 'mcu': Starting serial connect
+mcu 'mcu': Unable to open serial port: [Errno 2] could not open port /dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00: [Errno 2] No such file or directory: '/dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00'
+webhooks client 281472958988416: New connection
+webhooks client 281472958988416: Client info {'program': 'Moonraker', 'version': 'v0.8.0-23-g18f5ff4-dirty'}
+mcu 'mcu': Unable to open serial port: [Errno 2] could not open port /dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00: [Errno 2] No such file or directory: '/dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00'
+mcu 'mcu': Unable to open serial port: [Errno 2] could not open port /dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00: [Errno 2] No such file or directory: '/dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00'
+mcu 'mcu': Unable to open serial port: [Errno 2] could not open port /dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00: [Errno 2] No such file or directory: '/dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00'
+mcu 'mcu': Unable to open serial port: [Errno 2] could not open port /dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00: [Errno 2] No such file or directory: '/dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00'
+mcu 'mcu': Unable to open serial port: [Errno 2] could not open port /dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00: [Errno 2] No such file or directory: '/dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00'
+mcu 'mcu': Unable to open serial port: [Errno 2] could not open port /dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00: [Errno 2] No such file or directory: '/dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00'
+mcu 'mcu': Unable to open serial port: [Errno 2] could not open port /dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00: [Errno 2] No such file or directory: '/dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00'
+mcu 'mcu': Unable to open serial port: [Errno 2] could not open port /dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00: [Errno 2] No such file or directory: '/dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00'
+mcu 'mcu': Unable to open serial port: [Errno 2] could not open port /dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00: [Errno 2] No such file or directory: '/dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00'
+mcu 'mcu': Unable to open serial port: [Errno 2] could not open port /dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00: [Errno 2] No such file or directory: '/dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00'
+mcu 'mcu': Unable to open serial port: [Errno 2] could not open port /dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00: [Errno 2] No such file or directory: '/dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00'
+mcu 'mcu': Unable to open serial port: [Errno 2] could not open port /dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00: [Errno 2] No such file or directory: '/dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00'
+mcu 'mcu': Unable to open serial port: [Errno 2] could not open port /dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00: [Errno 2] No such file or directory: '/dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00'
+mcu 'mcu': Unable to open serial port: [Errno 2] could not open port /dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00: [Errno 2] No such file or directory: '/dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00'
+mcu 'mcu': Unable to open serial port: [Errno 2] could not open port /dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00: [Errno 2] No such file or directory: '/dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00'
+mcu 'mcu': Unable to open serial port: [Errno 2] could not open port /dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00: [Errno 2] No such file or directory: '/dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00'
+mcu 'mcu': Unable to open serial port: [Errno 2] could not open port /dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00: [Errno 2] No such file or directory: '/dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00'
+MCU error during connect
+Traceback (most recent call last):
+  File "/home/mks/klipper/klippy/mcu.py", line 798, in _mcu_identify
+    self._serial.connect_uart(self._serialport, self._baud, rts)
+  File "/home/mks/klipper/klippy/serialhdl.py", line 182, in connect_uart
+    self._error("Unable to connect")
+  File "/home/mks/klipper/klippy/serialhdl.py", line 61, in _error
+    raise error(self.warn_prefix + (msg % params))
+serialhdl.error: mcu 'mcu': Unable to connect
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/mks/klipper/klippy/klippy.py", line 176, in _connect
+    self.send_event("klippy:mcu_identify")
+  File "/home/mks/klipper/klippy/klippy.py", line 263, in send_event
+    return [cb(*params) for cb in self.event_handlers.get(event, [])]
+  File "/home/mks/klipper/klippy/klippy.py", line 263, in <listcomp>
+    return [cb(*params) for cb in self.event_handlers.get(event, [])]
+  File "/home/mks/klipper/klippy/mcu.py", line 803, in _mcu_identify
+    raise error(str(e))
+mcu.error: mcu 'mcu': Unable to connect
+Build file /home/mks/klipper/klippy/../.config(3223): Sun Mar  5 17:11:05 2023
+========= Last MCU build config =========
+CONFIG_LOW_LEVEL_OPTIONS=y
+# CONFIG_MACH_AVR is not set
+# CONFIG_MACH_ATSAM is not set
+# CONFIG_MACH_ATSAMD is not set
+# CONFIG_MACH_LPC176X is not set
+CONFIG_MACH_STM32=y
+# CONFIG_MACH_HC32F460 is not set
+# CONFIG_MACH_RP2040 is not set
+# CONFIG_MACH_PRU is not set
+# CONFIG_MACH_AR100 is not set
+# CONFIG_MACH_LINUX is not set
+# CONFIG_MACH_SIMU is not set
+CONFIG_BOARD_DIRECTORY="stm32"
+CONFIG_MCU="stm32f407xx"
+CONFIG_CLOCK_FREQ=168000000
+CONFIG_USBSERIAL=y
+CONFIG_FLASH_SIZE=0x80000
+CONFIG_FLASH_BOOT_ADDRESS=0x8000000
+CONFIG_RAM_START=0x20000000
+CONFIG_RAM_SIZE=0x20000
+CONFIG_STACK_SIZE=512
+CONFIG_FLASH_APPLICATION_ADDRESS=0x800C000
+CONFIG_STM32_SELECT=y
+# CONFIG_MACH_STM32F103 is not set
+# CONFIG_MACH_STM32F207 is not set
+# CONFIG_MACH_STM32F401 is not set
+# CONFIG_MACH_STM32F405 is not set
+CONFIG_MACH_STM32F407=y
+# CONFIG_MACH_STM32F429 is not set
+# CONFIG_MACH_STM32F446 is not set
+# CONFIG_MACH_STM32F031 is not set
+# CONFIG_MACH_STM32F042 is not set
+# CONFIG_MACH_STM32F070 is not set
+# CONFIG_MACH_STM32F072 is not set
+# CONFIG_MACH_STM32G070 is not set
+# CONFIG_MACH_STM32G071 is not set
+# CONFIG_MACH_STM32G0B0 is not set
+# CONFIG_MACH_STM32G0B1 is not set
+# CONFIG_MACH_STM32G431 is not set
+# CONFIG_MACH_STM32H723 is not set
+# CONFIG_MACH_STM32H743 is not set
+# CONFIG_MACH_STM32H750 is not set
+# CONFIG_MACH_STM32L412 is not set
+CONFIG_MACH_STM32F4=y
+CONFIG_MACH_STM32F4x5=y
+CONFIG_HAVE_STM32_USBOTG=y
+CONFIG_HAVE_STM32_CANBUS=y
+CONFIG_HAVE_STM32_USBCANBUS=y
+CONFIG_STM32_DFU_ROM_ADDRESS=0x1fff0000
+# CONFIG_STM32_FLASH_START_8000 is not set
+# CONFIG_STM32_FLASH_START_20200 is not set
+CONFIG_STM32_FLASH_START_C000=y
+# CONFIG_STM32_FLASH_START_4000 is not set
+# CONFIG_STM32_FLASH_START_0000 is not set
+CONFIG_STM32_CLOCK_REF_8M=y
+# CONFIG_STM32_CLOCK_REF_12M is not set
+# CONFIG_STM32_CLOCK_REF_16M is not set
+# CONFIG_STM32_CLOCK_REF_20M is not set
+# CONFIG_STM32_CLOCK_REF_25M is not set
+# CONFIG_STM32_CLOCK_REF_INTERNAL is not set
+CONFIG_CLOCK_REF_FREQ=8000000
+CONFIG_STM32F0_TRIM=16
+CONFIG_STM32_USB_PA11_PA12=y
+# CONFIG_STM32_SERIAL_USART1 is not set
+# CONFIG_STM32_SERIAL_USART1_ALT_PB7_PB6 is not set
+# CONFIG_STM32_SERIAL_USART2 is not set
+# CONFIG_STM32_SERIAL_USART2_ALT_PD6_PD5 is not set
+# CONFIG_STM32_SERIAL_USART3 is not set
+# CONFIG_STM32_SERIAL_USART3_ALT_PD9_PD8 is not set
+# CONFIG_STM32_CANBUS_PA11_PA12 is not set
+# CONFIG_STM32_CANBUS_PA11_PB9 is not set
+# CONFIG_STM32_MMENU_CANBUS_PB8_PB9 is not set
+# CONFIG_STM32_MMENU_CANBUS_PI9_PH13 is not set
+# CONFIG_STM32_MMENU_CANBUS_PB5_PB6 is not set
+# CONFIG_STM32_MMENU_CANBUS_PB12_PB13 is not set
+# CONFIG_STM32_MMENU_CANBUS_PD0_PD1 is not set
+# CONFIG_STM32_USBCANBUS_PA11_PA12 is not set
+CONFIG_USB=y
+CONFIG_USB_VENDOR_ID=0x1d50
+CONFIG_USB_DEVICE_ID=0x614e
+CONFIG_USB_SERIAL_NUMBER_CHIPID=y
+CONFIG_USB_SERIAL_NUMBER="12345"
+
+#
+# USB ids
+#
+# end of USB ids
+
+CONFIG_CANBUS_FREQUENCY=500000
+CONFIG_INITIAL_PINS=""
+CONFIG_HAVE_GPIO=y
+CONFIG_HAVE_GPIO_ADC=y
+CONFIG_HAVE_GPIO_SPI=y
+CONFIG_HAVE_GPIO_SDIO=y
+CONFIG_HAVE_GPIO_I2C=y
+CONFIG_HAVE_GPIO_HARD_PWM=y
+CONFIG_HAVE_GPIO_BITBANGING=y
+CONFIG_HAVE_STRICT_TIMING=y
+CONFIG_HAVE_CHIPID=y
+CONFIG_HAVE_STEPPER_BOTH_EDGE=y
+CONFIG_HAVE_BOOTLOADER_REQUEST=y
+CONFIG_INLINE_STEPPER_HACK=y
+=======================
+Build file /home/mks/klipper/klippy/../out/klipper.dict(8495): Sun Mar  5 17:11:35 2023
+Last MCU build version: ?-20230305_171135-mkspi
+Last MCU build tools: gcc: (15:7-2018-q2-6) 7.3.1 20180622 (release) [ARM/embedded-7-branch revision 261907] binutils: (2.31.1-12+11) 2.31.1
+Last MCU build config: ADC_MAX=4095 BUS_PINS_i2c1=PB6,PB7 BUS_PINS_i2c1a=PB8,PB9 BUS_PINS_i2c2=PB10,PB11 BUS_PINS_i2c2a=PH4,PH5 BUS_PINS_i2c3=PA8,PC9 BUS_PINS_i2c3a=PH7,PH8 BUS_PINS_sdio=PC12,PD2,PC8,PC9,PC10,PC11 BUS_PINS_spi1=PA6,PA7,PA5 BUS_PINS_spi1a=PB4,PB5,PB3 BUS_PINS_spi2=PB14,PB15,PB13 BUS_PINS_spi2a=PC2,PC3,PB10 BUS_PINS_spi2b=PI2,PI3,PI1 BUS_PINS_spi3=PB4,PB5,PB3 BUS_PINS_spi3a=PC11,PC12,PC10 CLOCK_FREQ=168000000 MCU=stm32f407xx PWM_MAX=255 RESERVE_PINS_USB=PA11,PA12 RESERVE_PINS_crystal=PH0,PH1 STATS_SUMSQ_BASE=256 STEPPER_BOTH_EDGE=1
+Build file /home/mks/klipper/klippy/../out/klipper.elf(377440): Sun Mar  5 17:11:46 2023
+Starting Klippy...
+Args: ['/home/mks/klipper/klippy/klippy.py', '/home/mks/printer_data/config/printer.cfg', '-I', '/home/mks/printer_data/comms/klippy.serial', '-l', '/home/mks/printer_data/logs/klippy.log', '-a', '/home/mks/printer_data/comms/klippy.sock']
+Git version: 'v0.11.0-122-ge6ef48cd'
+CPU: 4 core ?
+Python: '3.7.3 (default, Oct 31 2022, 14:04:00) \n[GCC 8.3.0]'
+Start printer at Sat Apr 15 18:36:20 2023 (1681554980.6 25.3)
+===== Config file =====
+[mcu]
+restart_method = command
+serial = /dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00
+
+[stepper_x]
+step_pin = PC14
+dir_pin = !PC13
+enable_pin = !PC15
+microsteps = 16
+rotation_distance = 40
+full_steps_per_rotation = 200
+endstop_pin = PA14
+position_min = 0
+position_endstop = 230
+position_max = 230
+homing_speed = 50
+homing_retract_dist = 5
+homing_positive_dir = true
+step_pulse_duration = 0.000008
+
+[stepper_y]
+step_pin = PE5
+dir_pin = !PE4
+enable_pin = !PD14
+microsteps = 16
+rotation_distance = 40
+full_steps_per_rotation = 200
+endstop_pin = PA15
+position_min = 0
+position_endstop = 230
+position_max = 230
+homing_speed = 50
+homing_retract_dist = 5
+homing_positive_dir = true
+step_pulse_duration = 0.000008
+
+[stepper_z]
+step_pin = PE1
+dir_pin = !PE0
+enable_pin = !PE2
+microsteps = 16
+rotation_distance = 40
+full_steps_per_rotation = 200
+gear_ratio = 80:16
+endstop_pin = probe:z_virtual_endstop
+position_max = 255
+position_min = -5
+homing_speed = 8
+second_homing_speed = 3
+
+[stepper_z1]
+step_pin = PD6
+dir_pin = PD5
+enable_pin = !PD7
+microsteps = 16
+rotation_distance = 40
+full_steps_per_rotation = 200
+gear_ratio = 80:16
+
+[stepper_z2]
+step_pin = PD2
+dir_pin = PD1
+enable_pin = !PD3
+microsteps = 16
+rotation_distance = 40
+full_steps_per_rotation = 200
+gear_ratio = 80:16
+
+[stepper_z3]
+step_pin = PC7
+dir_pin = PC6
+enable_pin = !PC8
+microsteps = 16
+rotation_distance = 40
+full_steps_per_rotation = 200
+gear_ratio = 80:16
+
+[extruder]
+step_pin = PB5
+dir_pin = !PB4
+enable_pin = !PB6
+microsteps = 16
+rotation_distance = 25.12
+gear_ratio = 50:17
+full_steps_per_rotation = 200
+nozzle_diameter = 0.400
+filament_diameter = 1.750
+min_temp = 0
+max_temp = 275
+heater_pin = PB1
+sensor_type = NTC 100K MGB18-104F39050L32
+sensor_pin = PC1
+max_power = 1.0
+control = pid
+pid_kp = 26.213
+pid_ki = 1.304
+pid_kd = 131.721
+pressure_advance = 0.00
+pressure_advance_smooth_time = 0.150
+max_extrude_cross_section = 20
+instantaneous_corner_velocity = 1.000
+max_extrude_only_distance = 50.0
+max_extrude_only_velocity = 5000
+max_extrude_only_accel = 2000
+step_pulse_duration = 0.000004
+
+[fan]
+pin = PA2
+
+[heater_fan fan1]
+pin = PA1
+shutdown_speed = 1
+
+[heater_fan fan2]
+pin = PA0
+shutdown_speed = 1
+
+[idle_timeout]
+timeout = 3600
+
+[safe_z_home]
+home_xy_position = 115,115
+speed = 100
+z_hop = 10
+z_hop_speed = 5
+
+[quad_gantry_level]
+gantry_corners = 
+	-58,-7
+	308,318
+points = 
+	10,10
+	10,200
+	220,200
+	220,10
+speed = 80
+horizontal_move_z = 10
+retries = 1
+retry_tolerance = 0.05
+max_adjust = 30
+
+[probe]
+pin = !PB15
+x_offset = 0
+y_offset = 25.0
+z_offset = 0.55
+speed = 10.0
+samples = 2
+samples_result = median
+sample_retract_dist = 3.0
+samples_tolerance = 0.05
+samples_tolerance_retries = 1
+
+[printer]
+kinematics = corexy
+max_velocity = 500
+max_accel = 8000
+max_accel_to_decel = 4000
+max_z_velocity = 15
+max_z_accel = 100
+square_corner_velocity = 2.0
+
+[tmc2209 stepper_x]
+uart_pin = PE6
+run_current = 0.8
+hold_current = 0.5
+interpolate = True
+stealthchop_threshold = 400
+
+[tmc2209 stepper_y]
+uart_pin = PE3
+run_current = 0.8
+hold_current = 0.5
+interpolate = True
+stealthchop_threshold = 400
+
+[tmc2209 stepper_z]
+uart_pin = PB7
+run_current = 0.8
+hold_current = 0.5
+interpolate = True
+stealthchop_threshold = 120
+
+[tmc2209 stepper_z1]
+uart_pin = PD4
+interpolate = True
+run_current = 0.8
+hold_current = 0.5
+stealthchop_threshold = 120
+
+[tmc2209 stepper_z2]
+uart_pin = PD0
+interpolate = True
+run_current = 0.8
+hold_current = 0.5
+stealthchop_threshold = 120
+
+[tmc2209 stepper_z3]
+uart_pin = PD15
+interpolate = True
+run_current = 0.8
+hold_current = 0.5
+stealthchop_threshold = 120
+
+[tmc2209 extruder]
+uart_pin = PB3
+run_current = 0.8
+hold_current = 0.5
+interpolate = True
+stealthchop_threshold = 400
+
+[board_pins]
+aliases = 
+	
+	EXP1_1=PB2,  EXP1_3=PE11, EXP1_5=PD9, EXP1_7=PE15, EXP1_9=<GND>,
+	EXP1_2=PE10, EXP1_4=PD10, EXP1_6=PD8, EXP1_8=PE7,  EXP1_10=<5V>,
+	
+	EXP2_1=PA6, EXP2_3=PE9, EXP2_5=PE8, EXP2_7=PD13,  EXP2_9=<GND>,
+	EXP2_2=PA5, EXP2_4=PA4, EXP2_6=PA7, EXP2_8=<RST>, EXP2_10=<3.3v>
+
+[display]
+lcd_type = uc1701
+cs_pin = EXP1_3
+a0_pin = EXP1_4
+rst_pin = EXP1_5
+contrast = 63
+encoder_pins = ^EXP2_5, ^EXP2_3
+click_pin = ^!EXP1_2
+spi_software_miso_pin = EXP2_1
+spi_software_mosi_pin = EXP2_6
+spi_software_sclk_pin = EXP2_2
+
+[output_pin beeper]
+pin = EXP1_1
+
+[neopixel fysetc_mini12864]
+pin = EXP1_6
+chain_count = 3
+color_order = RGB
+initial_red = 1.0
+initial_green = 1.0
+initial_blue = 0.0
+
+[mcu rpi]
+serial = /tmp/klipper_host_mcu
+
+[adxl345]
+cs_pin = rpi:None
+spi_bus = spidev0.0
+
+[resonance_tester]
+accel_chip = adxl345
+probe_points = 
+	100, 100, 20
+
+[input_shaper]
+shaper_freq_x = 68.4
+shaper_type_x = mzv
+shaper_freq_y = 45.6
+shaper_type_y = mzv
+
+[virtual_sdcard]
+path = /home/mks/printer_data/gcodes
+
+[pause_resume]
+
+[gcode_macro CANCEL_PRINT]
+description = Cancel the actual running print
+rename_existing = CANCEL_PRINT_BASE
+gcode = 
+	TURN_OFF_HEATERS
+	CANCEL_PRINT_BASE
+
+[display_status]
+
+[gcode_macro G32]
+gcode = 
+	BED_MESH_CLEAR
+	G28
+	QUAD_GANTRY_LEVEL
+	G2888
+=======================
+Extruder max_extrude_ratio=8.315034
+mcu 'mcu': Starting serial connect
+mcu 'mcu': Unable to open serial port: [Errno 2] could not open port /dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00: [Errno 2] No such file or directory: '/dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00'
+webhooks client 281473414525056: New connection
+webhooks client 281473414525056: Client info {'program': 'Moonraker', 'version': 'v0.8.0-23-g18f5ff4-dirty'}
+mcu 'mcu': Unable to open serial port: [Errno 2] could not open port /dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00: [Errno 2] No such file or directory: '/dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00'
+mcu 'mcu': Unable to open serial port: [Errno 2] could not open port /dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00: [Errno 2] No such file or directory: '/dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00'
+mcu 'mcu': Unable to open serial port: [Errno 2] could not open port /dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00: [Errno 2] No such file or directory: '/dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00'
+Starting Klippy...
+Args: ['/home/mks/klipper/klippy/klippy.py', '/home/mks/printer_data/config/printer.cfg', '-I', '/home/mks/printer_data/comms/klippy.serial', '-l', '/home/mks/printer_data/logs/klippy.log', '-a', '/home/mks/printer_data/comms/klippy.sock']
+Git version: 'v0.11.0-122-ge6ef48cd'
+CPU: 4 core ?
+Python: '3.7.3 (default, Oct 31 2022, 14:04:00) \n[GCC 8.3.0]'
+Start printer at Sat Apr 15 18:37:16 2023 (1681555036.6 25.3)
+===== Config file =====
+[mcu]
+restart_method = command
+serial = /dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00
+
+[stepper_x]
+step_pin = PC14
+dir_pin = !PC13
+enable_pin = !PC15
+microsteps = 16
+rotation_distance = 40
+full_steps_per_rotation = 200
+endstop_pin = PA14
+position_min = 0
+position_endstop = 230
+position_max = 230
+homing_speed = 50
+homing_retract_dist = 5
+homing_positive_dir = true
+step_pulse_duration = 0.000008
+
+[stepper_y]
+step_pin = PE5
+dir_pin = !PE4
+enable_pin = !PD14
+microsteps = 16
+rotation_distance = 40
+full_steps_per_rotation = 200
+endstop_pin = PA15
+position_min = 0
+position_endstop = 230
+position_max = 230
+homing_speed = 50
+homing_retract_dist = 5
+homing_positive_dir = true
+step_pulse_duration = 0.000008
+
+[stepper_z]
+step_pin = PE1
+dir_pin = !PE0
+enable_pin = !PE2
+microsteps = 16
+rotation_distance = 40
+full_steps_per_rotation = 200
+gear_ratio = 80:16
+endstop_pin = probe:z_virtual_endstop
+position_max = 255
+position_min = -5
+homing_speed = 8
+second_homing_speed = 3
+
+[stepper_z1]
+step_pin = PD6
+dir_pin = PD5
+enable_pin = !PD7
+microsteps = 16
+rotation_distance = 40
+full_steps_per_rotation = 200
+gear_ratio = 80:16
+
+[stepper_z2]
+step_pin = PD2
+dir_pin = PD1
+enable_pin = !PD3
+microsteps = 16
+rotation_distance = 40
+full_steps_per_rotation = 200
+gear_ratio = 80:16
+
+[stepper_z3]
+step_pin = PC7
+dir_pin = PC6
+enable_pin = !PC8
+microsteps = 16
+rotation_distance = 40
+full_steps_per_rotation = 200
+gear_ratio = 80:16
+
+[extruder]
+step_pin = PB5
+dir_pin = !PB4
+enable_pin = !PB6
+microsteps = 16
+rotation_distance = 25.12
+gear_ratio = 50:17
+full_steps_per_rotation = 200
+nozzle_diameter = 0.400
+filament_diameter = 1.750
+min_temp = 0
+max_temp = 275
+heater_pin = PB1
+sensor_type = NTC 100K MGB18-104F39050L32
+sensor_pin = PC1
+max_power = 1.0
+control = pid
+pid_kp = 26.213
+pid_ki = 1.304
+pid_kd = 131.721
+pressure_advance = 0.00
+pressure_advance_smooth_time = 0.150
+max_extrude_cross_section = 20
+instantaneous_corner_velocity = 1.000
+max_extrude_only_distance = 50.0
+max_extrude_only_velocity = 5000
+max_extrude_only_accel = 2000
+step_pulse_duration = 0.000004
+
+[fan]
+pin = PA2
+
+[heater_fan fan1]
+pin = PA1
+shutdown_speed = 1
+
+[heater_fan fan2]
+pin = PA0
+shutdown_speed = 1
+
+[idle_timeout]
+timeout = 3600
+
+[safe_z_home]
+home_xy_position = 115,115
+speed = 100
+z_hop = 10
+z_hop_speed = 5
+
+[quad_gantry_level]
+gantry_corners = 
+	-58,-7
+	308,318
+points = 
+	10,10
+	10,200
+	220,200
+	220,10
+speed = 80
+horizontal_move_z = 10
+retries = 1
+retry_tolerance = 0.05
+max_adjust = 30
+
+[probe]
+pin = !PB15
+x_offset = 0
+y_offset = 25.0
+z_offset = 0.55
+speed = 10.0
+samples = 2
+samples_result = median
+sample_retract_dist = 3.0
+samples_tolerance = 0.05
+samples_tolerance_retries = 1
+
+[printer]
+kinematics = corexy
+max_velocity = 500
+max_accel = 8000
+max_accel_to_decel = 4000
+max_z_velocity = 15
+max_z_accel = 100
+square_corner_velocity = 2.0
+
+[tmc2209 stepper_x]
+uart_pin = PE6
+run_current = 0.8
+hold_current = 0.5
+interpolate = True
+stealthchop_threshold = 400
+
+[tmc2209 stepper_y]
+uart_pin = PE3
+run_current = 0.8
+hold_current = 0.5
+interpolate = True
+stealthchop_threshold = 400
+
+[tmc2209 stepper_z]
+uart_pin = PB7
+run_current = 0.8
+hold_current = 0.5
+interpolate = True
+stealthchop_threshold = 120
+
+[tmc2209 stepper_z1]
+uart_pin = PD4
+interpolate = True
+run_current = 0.8
+hold_current = 0.5
+stealthchop_threshold = 120
+
+[tmc2209 stepper_z2]
+uart_pin = PD0
+interpolate = True
+run_current = 0.8
+hold_current = 0.5
+stealthchop_threshold = 120
+
+[tmc2209 stepper_z3]
+uart_pin = PD15
+interpolate = True
+run_current = 0.8
+hold_current = 0.5
+stealthchop_threshold = 120
+
+[tmc2209 extruder]
+uart_pin = PB3
+run_current = 0.8
+hold_current = 0.5
+interpolate = True
+stealthchop_threshold = 400
+
+[board_pins]
+aliases = 
+	
+	EXP1_1=PB2,  EXP1_3=PE11, EXP1_5=PD9, EXP1_7=PE15, EXP1_9=<GND>,
+	EXP1_2=PE10, EXP1_4=PD10, EXP1_6=PD8, EXP1_8=PE7,  EXP1_10=<5V>,
+	
+	EXP2_1=PA6, EXP2_3=PE9, EXP2_5=PE8, EXP2_7=PD13,  EXP2_9=<GND>,
+	EXP2_2=PA5, EXP2_4=PA4, EXP2_6=PA7, EXP2_8=<RST>, EXP2_10=<3.3v>
+
+[display]
+lcd_type = uc1701
+cs_pin = EXP1_3
+a0_pin = EXP1_4
+rst_pin = EXP1_5
+contrast = 63
+encoder_pins = ^EXP2_5, ^EXP2_3
+click_pin = ^!EXP1_2
+spi_software_miso_pin = EXP2_1
+spi_software_mosi_pin = EXP2_6
+spi_software_sclk_pin = EXP2_2
+
+[output_pin beeper]
+pin = EXP1_1
+
+[neopixel fysetc_mini12864]
+pin = EXP1_6
+chain_count = 3
+color_order = RGB
+initial_red = 1.0
+initial_green = 1.0
+initial_blue = 0.0
+
+[mcu rpi]
+serial = /tmp/klipper_host_mcu
+
+[adxl345]
+cs_pin = rpi:None
+spi_bus = spidev0.0
+
+[resonance_tester]
+accel_chip = adxl345
+probe_points = 
+	100, 100, 20
+
+[input_shaper]
+shaper_freq_x = 68.4
+shaper_type_x = mzv
+shaper_freq_y = 45.6
+shaper_type_y = mzv
+
+[virtual_sdcard]
+path = /home/mks/printer_data/gcodes
+
+[pause_resume]
+
+[gcode_macro CANCEL_PRINT]
+description = Cancel the actual running print
+rename_existing = CANCEL_PRINT_BASE
+gcode = 
+	TURN_OFF_HEATERS
+	CANCEL_PRINT_BASE
+
+[display_status]
+
+[gcode_macro G32]
+gcode = 
+	BED_MESH_CLEAR
+	G28
+	QUAD_GANTRY_LEVEL
+	G2888
+=======================
+Extruder max_extrude_ratio=8.315034
+mcu 'mcu': Starting serial connect
+mcu 'mcu': Unable to open serial port: [Errno 2] could not open port /dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00: [Errno 2] No such file or directory: '/dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00'
+webhooks client 281472824508600: New connection
+webhooks client 281472824508600: Client info {'program': 'Moonraker', 'version': 'v0.8.0-23-g18f5ff4-dirty'}
+mcu 'mcu': Unable to open serial port: [Errno 2] could not open port /dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00: [Errno 2] No such file or directory: '/dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00'
+mcu 'mcu': Unable to open serial port: [Errno 2] could not open port /dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00: [Errno 2] No such file or directory: '/dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00'
+mcu 'mcu': Unable to open serial port: [Errno 2] could not open port /dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00: [Errno 2] No such file or directory: '/dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00'
+mcu 'mcu': Unable to open serial port: [Errno 2] could not open port /dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00: [Errno 2] No such file or directory: '/dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00'
+mcu 'mcu': Unable to open serial port: [Errno 2] could not open port /dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00: [Errno 2] No such file or directory: '/dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00'
+mcu 'mcu': Unable to open serial port: [Errno 2] could not open port /dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00: [Errno 2] No such file or directory: '/dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00'
+mcu 'mcu': Unable to open serial port: [Errno 2] could not open port /dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00: [Errno 2] No such file or directory: '/dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00'
+mcu 'mcu': Unable to open serial port: [Errno 2] could not open port /dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00: [Errno 2] No such file or directory: '/dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00'
+mcu 'mcu': Unable to open serial port: [Errno 2] could not open port /dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00: [Errno 2] No such file or directory: '/dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00'
+mcu 'mcu': Unable to open serial port: [Errno 2] could not open port /dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00: [Errno 2] No such file or directory: '/dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00'
+mcu 'mcu': Unable to open serial port: [Errno 2] could not open port /dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00: [Errno 2] No such file or directory: '/dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00'
+mcu 'mcu': Unable to open serial port: [Errno 2] could not open port /dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00: [Errno 2] No such file or directory: '/dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00'
+mcu 'mcu': Unable to open serial port: [Errno 2] could not open port /dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00: [Errno 2] No such file or directory: '/dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00'
+mcu 'mcu': Unable to open serial port: [Errno 2] could not open port /dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00: [Errno 2] No such file or directory: '/dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00'
+mcu 'mcu': Unable to open serial port: [Errno 2] could not open port /dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00: [Errno 2] No such file or directory: '/dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00'
+mcu 'mcu': Unable to open serial port: [Errno 2] could not open port /dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00: [Errno 2] No such file or directory: '/dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00'
+mcu 'mcu': Unable to open serial port: [Errno 2] could not open port /dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00: [Errno 2] No such file or directory: '/dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00'
+MCU error during connect
+Traceback (most recent call last):
+  File "/home/mks/klipper/klippy/mcu.py", line 798, in _mcu_identify
+    self._serial.connect_uart(self._serialport, self._baud, rts)
+  File "/home/mks/klipper/klippy/serialhdl.py", line 182, in connect_uart
+    self._error("Unable to connect")
+  File "/home/mks/klipper/klippy/serialhdl.py", line 61, in _error
+    raise error(self.warn_prefix + (msg % params))
+serialhdl.error: mcu 'mcu': Unable to connect
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/mks/klipper/klippy/klippy.py", line 176, in _connect
+    self.send_event("klippy:mcu_identify")
+  File "/home/mks/klipper/klippy/klippy.py", line 263, in send_event
+    return [cb(*params) for cb in self.event_handlers.get(event, [])]
+  File "/home/mks/klipper/klippy/klippy.py", line 263, in <listcomp>
+    return [cb(*params) for cb in self.event_handlers.get(event, [])]
+  File "/home/mks/klipper/klippy/mcu.py", line 803, in _mcu_identify
+    raise error(str(e))
+mcu.error: mcu 'mcu': Unable to connect
+Build file /home/mks/klipper/klippy/../.config(3223): Sun Mar  5 17:11:05 2023
+========= Last MCU build config =========
+CONFIG_LOW_LEVEL_OPTIONS=y
+# CONFIG_MACH_AVR is not set
+# CONFIG_MACH_ATSAM is not set
+# CONFIG_MACH_ATSAMD is not set
+# CONFIG_MACH_LPC176X is not set
+CONFIG_MACH_STM32=y
+# CONFIG_MACH_HC32F460 is not set
+# CONFIG_MACH_RP2040 is not set
+# CONFIG_MACH_PRU is not set
+# CONFIG_MACH_AR100 is not set
+# CONFIG_MACH_LINUX is not set
+# CONFIG_MACH_SIMU is not set
+CONFIG_BOARD_DIRECTORY="stm32"
+CONFIG_MCU="stm32f407xx"
+CONFIG_CLOCK_FREQ=168000000
+CONFIG_USBSERIAL=y
+CONFIG_FLASH_SIZE=0x80000
+CONFIG_FLASH_BOOT_ADDRESS=0x8000000
+CONFIG_RAM_START=0x20000000
+CONFIG_RAM_SIZE=0x20000
+CONFIG_STACK_SIZE=512
+CONFIG_FLASH_APPLICATION_ADDRESS=0x800C000
+CONFIG_STM32_SELECT=y
+# CONFIG_MACH_STM32F103 is not set
+# CONFIG_MACH_STM32F207 is not set
+# CONFIG_MACH_STM32F401 is not set
+# CONFIG_MACH_STM32F405 is not set
+CONFIG_MACH_STM32F407=y
+# CONFIG_MACH_STM32F429 is not set
+# CONFIG_MACH_STM32F446 is not set
+# CONFIG_MACH_STM32F031 is not set
+# CONFIG_MACH_STM32F042 is not set
+# CONFIG_MACH_STM32F070 is not set
+# CONFIG_MACH_STM32F072 is not set
+# CONFIG_MACH_STM32G070 is not set
+# CONFIG_MACH_STM32G071 is not set
+# CONFIG_MACH_STM32G0B0 is not set
+# CONFIG_MACH_STM32G0B1 is not set
+# CONFIG_MACH_STM32G431 is not set
+# CONFIG_MACH_STM32H723 is not set
+# CONFIG_MACH_STM32H743 is not set
+# CONFIG_MACH_STM32H750 is not set
+# CONFIG_MACH_STM32L412 is not set
+CONFIG_MACH_STM32F4=y
+CONFIG_MACH_STM32F4x5=y
+CONFIG_HAVE_STM32_USBOTG=y
+CONFIG_HAVE_STM32_CANBUS=y
+CONFIG_HAVE_STM32_USBCANBUS=y
+CONFIG_STM32_DFU_ROM_ADDRESS=0x1fff0000
+# CONFIG_STM32_FLASH_START_8000 is not set
+# CONFIG_STM32_FLASH_START_20200 is not set
+CONFIG_STM32_FLASH_START_C000=y
+# CONFIG_STM32_FLASH_START_4000 is not set
+# CONFIG_STM32_FLASH_START_0000 is not set
+CONFIG_STM32_CLOCK_REF_8M=y
+# CONFIG_STM32_CLOCK_REF_12M is not set
+# CONFIG_STM32_CLOCK_REF_16M is not set
+# CONFIG_STM32_CLOCK_REF_20M is not set
+# CONFIG_STM32_CLOCK_REF_25M is not set
+# CONFIG_STM32_CLOCK_REF_INTERNAL is not set
+CONFIG_CLOCK_REF_FREQ=8000000
+CONFIG_STM32F0_TRIM=16
+CONFIG_STM32_USB_PA11_PA12=y
+# CONFIG_STM32_SERIAL_USART1 is not set
+# CONFIG_STM32_SERIAL_USART1_ALT_PB7_PB6 is not set
+# CONFIG_STM32_SERIAL_USART2 is not set
+# CONFIG_STM32_SERIAL_USART2_ALT_PD6_PD5 is not set
+# CONFIG_STM32_SERIAL_USART3 is not set
+# CONFIG_STM32_SERIAL_USART3_ALT_PD9_PD8 is not set
+# CONFIG_STM32_CANBUS_PA11_PA12 is not set
+# CONFIG_STM32_CANBUS_PA11_PB9 is not set
+# CONFIG_STM32_MMENU_CANBUS_PB8_PB9 is not set
+# CONFIG_STM32_MMENU_CANBUS_PI9_PH13 is not set
+# CONFIG_STM32_MMENU_CANBUS_PB5_PB6 is not set
+# CONFIG_STM32_MMENU_CANBUS_PB12_PB13 is not set
+# CONFIG_STM32_MMENU_CANBUS_PD0_PD1 is not set
+# CONFIG_STM32_USBCANBUS_PA11_PA12 is not set
+CONFIG_USB=y
+CONFIG_USB_VENDOR_ID=0x1d50
+CONFIG_USB_DEVICE_ID=0x614e
+CONFIG_USB_SERIAL_NUMBER_CHIPID=y
+CONFIG_USB_SERIAL_NUMBER="12345"
+
+#
+# USB ids
+#
+# end of USB ids
+
+CONFIG_CANBUS_FREQUENCY=500000
+CONFIG_INITIAL_PINS=""
+CONFIG_HAVE_GPIO=y
+CONFIG_HAVE_GPIO_ADC=y
+CONFIG_HAVE_GPIO_SPI=y
+CONFIG_HAVE_GPIO_SDIO=y
+CONFIG_HAVE_GPIO_I2C=y
+CONFIG_HAVE_GPIO_HARD_PWM=y
+CONFIG_HAVE_GPIO_BITBANGING=y
+CONFIG_HAVE_STRICT_TIMING=y
+CONFIG_HAVE_CHIPID=y
+CONFIG_HAVE_STEPPER_BOTH_EDGE=y
+CONFIG_HAVE_BOOTLOADER_REQUEST=y
+CONFIG_INLINE_STEPPER_HACK=y
+=======================
+Build file /home/mks/klipper/klippy/../out/klipper.dict(8495): Sun Mar  5 17:11:35 2023
+Last MCU build version: ?-20230305_171135-mkspi
+Last MCU build tools: gcc: (15:7-2018-q2-6) 7.3.1 20180622 (release) [ARM/embedded-7-branch revision 261907] binutils: (2.31.1-12+11) 2.31.1
+Last MCU build config: ADC_MAX=4095 BUS_PINS_i2c1=PB6,PB7 BUS_PINS_i2c1a=PB8,PB9 BUS_PINS_i2c2=PB10,PB11 BUS_PINS_i2c2a=PH4,PH5 BUS_PINS_i2c3=PA8,PC9 BUS_PINS_i2c3a=PH7,PH8 BUS_PINS_sdio=PC12,PD2,PC8,PC9,PC10,PC11 BUS_PINS_spi1=PA6,PA7,PA5 BUS_PINS_spi1a=PB4,PB5,PB3 BUS_PINS_spi2=PB14,PB15,PB13 BUS_PINS_spi2a=PC2,PC3,PB10 BUS_PINS_spi2b=PI2,PI3,PI1 BUS_PINS_spi3=PB4,PB5,PB3 BUS_PINS_spi3a=PC11,PC12,PC10 CLOCK_FREQ=168000000 MCU=stm32f407xx PWM_MAX=255 RESERVE_PINS_USB=PA11,PA12 RESERVE_PINS_crystal=PH0,PH1 STATS_SUMSQ_BASE=256 STEPPER_BOTH_EDGE=1
+Build file /home/mks/klipper/klippy/../out/klipper.elf(377440): Sun Mar  5 17:11:46 2023
+Starting Klippy...
+Args: ['/home/mks/klipper/klippy/klippy.py', '/home/mks/printer_data/config/printer.cfg', '-I', '/home/mks/printer_data/comms/klippy.serial', '-l', '/home/mks/printer_data/logs/klippy.log', '-a', '/home/mks/printer_data/comms/klippy.sock']
+Git version: 'v0.11.0-122-ge6ef48cd'
+CPU: 4 core ?
+Python: '3.7.3 (default, Oct 31 2022, 14:04:00) \n[GCC 8.3.0]'
+Start printer at Sat Apr 15 18:41:08 2023 (1681555268.8 25.4)
+===== Config file =====
+[mcu]
+restart_method = command
+serial = /dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00
+
+[stepper_x]
+step_pin = PC14
+dir_pin = !PC13
+enable_pin = !PC15
+microsteps = 16
+rotation_distance = 40
+full_steps_per_rotation = 200
+endstop_pin = PA14
+position_min = 0
+position_endstop = 230
+position_max = 230
+homing_speed = 50
+homing_retract_dist = 5
+homing_positive_dir = true
+step_pulse_duration = 0.000008
+
+[stepper_y]
+step_pin = PE5
+dir_pin = !PE4
+enable_pin = !PD14
+microsteps = 16
+rotation_distance = 40
+full_steps_per_rotation = 200
+endstop_pin = PA15
+position_min = 0
+position_endstop = 230
+position_max = 230
+homing_speed = 50
+homing_retract_dist = 5
+homing_positive_dir = true
+step_pulse_duration = 0.000008
+
+[stepper_z]
+step_pin = PE1
+dir_pin = !PE0
+enable_pin = !PE2
+microsteps = 16
+rotation_distance = 40
+full_steps_per_rotation = 200
+gear_ratio = 80:16
+endstop_pin = probe:z_virtual_endstop
+position_max = 255
+position_min = -5
+homing_speed = 8
+second_homing_speed = 3
+
+[stepper_z1]
+step_pin = PD6
+dir_pin = PD5
+enable_pin = !PD7
+microsteps = 16
+rotation_distance = 40
+full_steps_per_rotation = 200
+gear_ratio = 80:16
+
+[stepper_z2]
+step_pin = PD2
+dir_pin = PD1
+enable_pin = !PD3
+microsteps = 16
+rotation_distance = 40
+full_steps_per_rotation = 200
+gear_ratio = 80:16
+
+[stepper_z3]
+step_pin = PC7
+dir_pin = PC6
+enable_pin = !PC8
+microsteps = 16
+rotation_distance = 40
+full_steps_per_rotation = 200
+gear_ratio = 80:16
+
+[extruder]
+step_pin = PB5
+dir_pin = !PB4
+enable_pin = !PB6
+microsteps = 16
+rotation_distance = 25.12
+gear_ratio = 50:17
+full_steps_per_rotation = 200
+nozzle_diameter = 0.400
+filament_diameter = 1.750
+min_temp = 0
+max_temp = 275
+heater_pin = PB1
+sensor_type = NTC 100K MGB18-104F39050L32
+sensor_pin = PC1
+max_power = 1.0
+control = pid
+pid_kp = 26.213
+pid_ki = 1.304
+pid_kd = 131.721
+pressure_advance = 0.00
+pressure_advance_smooth_time = 0.150
+max_extrude_cross_section = 20
+instantaneous_corner_velocity = 1.000
+max_extrude_only_distance = 50.0
+max_extrude_only_velocity = 5000
+max_extrude_only_accel = 2000
+step_pulse_duration = 0.000004
+
+[fan]
+pin = PA2
+
+[heater_fan fan1]
+pin = PA1
+shutdown_speed = 1
+
+[heater_fan fan2]
+pin = PA0
+shutdown_speed = 1
+
+[idle_timeout]
+timeout = 3600
+
+[safe_z_home]
+home_xy_position = 115,115
+speed = 100
+z_hop = 10
+z_hop_speed = 5
+
+[quad_gantry_level]
+gantry_corners = 
+	-58,-7
+	308,318
+points = 
+	10,10
+	10,200
+	220,200
+	220,10
+speed = 80
+horizontal_move_z = 10
+retries = 1
+retry_tolerance = 0.05
+max_adjust = 30
+
+[probe]
+pin = !PB15
+x_offset = 0
+y_offset = 25.0
+z_offset = 0.55
+speed = 10.0
+samples = 2
+samples_result = median
+sample_retract_dist = 3.0
+samples_tolerance = 0.05
+samples_tolerance_retries = 1
+
+[printer]
+kinematics = corexy
+max_velocity = 500
+max_accel = 8000
+max_accel_to_decel = 4000
+max_z_velocity = 15
+max_z_accel = 100
+square_corner_velocity = 2.0
+
+[tmc2209 stepper_x]
+uart_pin = PE6
+run_current = 0.8
+hold_current = 0.5
+interpolate = True
+stealthchop_threshold = 400
+
+[tmc2209 stepper_y]
+uart_pin = PE3
+run_current = 0.8
+hold_current = 0.5
+interpolate = True
+stealthchop_threshold = 400
+
+[tmc2209 stepper_z]
+uart_pin = PB7
+run_current = 0.8
+hold_current = 0.5
+interpolate = True
+stealthchop_threshold = 120
+
+[tmc2209 stepper_z1]
+uart_pin = PD4
+interpolate = True
+run_current = 0.8
+hold_current = 0.5
+stealthchop_threshold = 120
+
+[tmc2209 stepper_z2]
+uart_pin = PD0
+interpolate = True
+run_current = 0.8
+hold_current = 0.5
+stealthchop_threshold = 120
+
+[tmc2209 stepper_z3]
+uart_pin = PD15
+interpolate = True
+run_current = 0.8
+hold_current = 0.5
+stealthchop_threshold = 120
+
+[tmc2209 extruder]
+uart_pin = PB3
+run_current = 0.8
+hold_current = 0.5
+interpolate = True
+stealthchop_threshold = 400
+
+[board_pins]
+aliases = 
+	
+	EXP1_1=PB2,  EXP1_3=PE11, EXP1_5=PD9, EXP1_7=PE15, EXP1_9=<GND>,
+	EXP1_2=PE10, EXP1_4=PD10, EXP1_6=PD8, EXP1_8=PE7,  EXP1_10=<5V>,
+	
+	EXP2_1=PA6, EXP2_3=PE9, EXP2_5=PE8, EXP2_7=PD13,  EXP2_9=<GND>,
+	EXP2_2=PA5, EXP2_4=PA4, EXP2_6=PA7, EXP2_8=<RST>, EXP2_10=<3.3v>
+
+[display]
+lcd_type = uc1701
+cs_pin = EXP1_3
+a0_pin = EXP1_4
+rst_pin = EXP1_5
+contrast = 63
+encoder_pins = ^EXP2_5, ^EXP2_3
+click_pin = ^!EXP1_2
+spi_software_miso_pin = EXP2_1
+spi_software_mosi_pin = EXP2_6
+spi_software_sclk_pin = EXP2_2
+
+[output_pin beeper]
+pin = EXP1_1
+
+[neopixel fysetc_mini12864]
+pin = EXP1_6
+chain_count = 3
+color_order = RGB
+initial_red = 1.0
+initial_green = 1.0
+initial_blue = 0.0
+
+[mcu rpi]
+serial = /tmp/klipper_host_mcu
+
+[adxl345]
+cs_pin = rpi:None
+spi_bus = spidev0.0
+
+[resonance_tester]
+accel_chip = adxl345
+probe_points = 
+	100, 100, 20
+
+[input_shaper]
+shaper_freq_x = 68.4
+shaper_type_x = mzv
+shaper_freq_y = 45.6
+shaper_type_y = mzv
+
+[virtual_sdcard]
+path = /home/mks/printer_data/gcodes
+
+[pause_resume]
+
+[gcode_macro CANCEL_PRINT]
+description = Cancel the actual running print
+rename_existing = CANCEL_PRINT_BASE
+gcode = 
+	TURN_OFF_HEATERS
+	CANCEL_PRINT_BASE
+
+[display_status]
+
+[gcode_macro G32]
+gcode = 
+	BED_MESH_CLEAR
+	G28
+	QUAD_GANTRY_LEVEL
+	G2888
+=======================
+Extruder max_extrude_ratio=8.315034
+mcu 'mcu': Starting serial connect
+mcu 'mcu': Unable to open serial port: [Errno 2] could not open port /dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00: [Errno 2] No such file or directory: '/dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00'
+webhooks client 281473396620704: New connection
+webhooks client 281473396620704: Client info {'program': 'Moonraker', 'version': 'v0.8.0-23-g18f5ff4-dirty'}
+mcu 'mcu': Unable to open serial port: [Errno 2] could not open port /dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00: [Errno 2] No such file or directory: '/dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00'
+mcu 'mcu': Unable to open serial port: [Errno 2] could not open port /dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00: [Errno 2] No such file or directory: '/dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00'
+mcu 'mcu': Unable to open serial port: [Errno 2] could not open port /dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00: [Errno 2] No such file or directory: '/dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00'
+mcu 'mcu': Unable to open serial port: [Errno 2] could not open port /dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00: [Errno 2] No such file or directory: '/dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00'
+mcu 'mcu': Unable to open serial port: [Errno 2] could not open port /dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00: [Errno 2] No such file or directory: '/dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00'
+mcu 'mcu': Unable to open serial port: [Errno 2] could not open port /dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00: [Errno 2] No such file or directory: '/dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00'
+mcu 'mcu': Unable to open serial port: [Errno 2] could not open port /dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00: [Errno 2] No such file or directory: '/dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00'
+mcu 'mcu': Unable to open serial port: [Errno 2] could not open port /dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00: [Errno 2] No such file or directory: '/dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00'
+mcu 'mcu': Unable to open serial port: [Errno 2] could not open port /dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00: [Errno 2] No such file or directory: '/dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00'
+mcu 'mcu': Unable to open serial port: [Errno 2] could not open port /dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00: [Errno 2] No such file or directory: '/dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00'
+mcu 'mcu': Unable to open serial port: [Errno 2] could not open port /dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00: [Errno 2] No such file or directory: '/dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00'
+mcu 'mcu': Unable to open serial port: [Errno 2] could not open port /dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00: [Errno 2] No such file or directory: '/dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00'
+mcu 'mcu': Unable to open serial port: [Errno 2] could not open port /dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00: [Errno 2] No such file or directory: '/dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00'
+mcu 'mcu': Unable to open serial port: [Errno 2] could not open port /dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00: [Errno 2] No such file or directory: '/dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00'
+mcu 'mcu': Unable to open serial port: [Errno 2] could not open port /dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00: [Errno 2] No such file or directory: '/dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00'
+mcu 'mcu': Unable to open serial port: [Errno 2] could not open port /dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00: [Errno 2] No such file or directory: '/dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00'
+mcu 'mcu': Unable to open serial port: [Errno 2] could not open port /dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00: [Errno 2] No such file or directory: '/dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00'
+MCU error during connect
+Traceback (most recent call last):
+  File "/home/mks/klipper/klippy/mcu.py", line 798, in _mcu_identify
+    self._serial.connect_uart(self._serialport, self._baud, rts)
+  File "/home/mks/klipper/klippy/serialhdl.py", line 182, in connect_uart
+    self._error("Unable to connect")
+  File "/home/mks/klipper/klippy/serialhdl.py", line 61, in _error
+    raise error(self.warn_prefix + (msg % params))
+serialhdl.error: mcu 'mcu': Unable to connect
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/mks/klipper/klippy/klippy.py", line 176, in _connect
+    self.send_event("klippy:mcu_identify")
+  File "/home/mks/klipper/klippy/klippy.py", line 263, in send_event
+    return [cb(*params) for cb in self.event_handlers.get(event, [])]
+  File "/home/mks/klipper/klippy/klippy.py", line 263, in <listcomp>
+    return [cb(*params) for cb in self.event_handlers.get(event, [])]
+  File "/home/mks/klipper/klippy/mcu.py", line 803, in _mcu_identify
+    raise error(str(e))
+mcu.error: mcu 'mcu': Unable to connect
+Build file /home/mks/klipper/klippy/../.config(3223): Sun Mar  5 17:11:05 2023
+========= Last MCU build config =========
+CONFIG_LOW_LEVEL_OPTIONS=y
+# CONFIG_MACH_AVR is not set
+# CONFIG_MACH_ATSAM is not set
+# CONFIG_MACH_ATSAMD is not set
+# CONFIG_MACH_LPC176X is not set
+CONFIG_MACH_STM32=y
+# CONFIG_MACH_HC32F460 is not set
+# CONFIG_MACH_RP2040 is not set
+# CONFIG_MACH_PRU is not set
+# CONFIG_MACH_AR100 is not set
+# CONFIG_MACH_LINUX is not set
+# CONFIG_MACH_SIMU is not set
+CONFIG_BOARD_DIRECTORY="stm32"
+CONFIG_MCU="stm32f407xx"
+CONFIG_CLOCK_FREQ=168000000
+CONFIG_USBSERIAL=y
+CONFIG_FLASH_SIZE=0x80000
+CONFIG_FLASH_BOOT_ADDRESS=0x8000000
+CONFIG_RAM_START=0x20000000
+CONFIG_RAM_SIZE=0x20000
+CONFIG_STACK_SIZE=512
+CONFIG_FLASH_APPLICATION_ADDRESS=0x800C000
+CONFIG_STM32_SELECT=y
+# CONFIG_MACH_STM32F103 is not set
+# CONFIG_MACH_STM32F207 is not set
+# CONFIG_MACH_STM32F401 is not set
+# CONFIG_MACH_STM32F405 is not set
+CONFIG_MACH_STM32F407=y
+# CONFIG_MACH_STM32F429 is not set
+# CONFIG_MACH_STM32F446 is not set
+# CONFIG_MACH_STM32F031 is not set
+# CONFIG_MACH_STM32F042 is not set
+# CONFIG_MACH_STM32F070 is not set
+# CONFIG_MACH_STM32F072 is not set
+# CONFIG_MACH_STM32G070 is not set
+# CONFIG_MACH_STM32G071 is not set
+# CONFIG_MACH_STM32G0B0 is not set
+# CONFIG_MACH_STM32G0B1 is not set
+# CONFIG_MACH_STM32G431 is not set
+# CONFIG_MACH_STM32H723 is not set
+# CONFIG_MACH_STM32H743 is not set
+# CONFIG_MACH_STM32H750 is not set
+# CONFIG_MACH_STM32L412 is not set
+CONFIG_MACH_STM32F4=y
+CONFIG_MACH_STM32F4x5=y
+CONFIG_HAVE_STM32_USBOTG=y
+CONFIG_HAVE_STM32_CANBUS=y
+CONFIG_HAVE_STM32_USBCANBUS=y
+CONFIG_STM32_DFU_ROM_ADDRESS=0x1fff0000
+# CONFIG_STM32_FLASH_START_8000 is not set
+# CONFIG_STM32_FLASH_START_20200 is not set
+CONFIG_STM32_FLASH_START_C000=y
+# CONFIG_STM32_FLASH_START_4000 is not set
+# CONFIG_STM32_FLASH_START_0000 is not set
+CONFIG_STM32_CLOCK_REF_8M=y
+# CONFIG_STM32_CLOCK_REF_12M is not set
+# CONFIG_STM32_CLOCK_REF_16M is not set
+# CONFIG_STM32_CLOCK_REF_20M is not set
+# CONFIG_STM32_CLOCK_REF_25M is not set
+# CONFIG_STM32_CLOCK_REF_INTERNAL is not set
+CONFIG_CLOCK_REF_FREQ=8000000
+CONFIG_STM32F0_TRIM=16
+CONFIG_STM32_USB_PA11_PA12=y
+# CONFIG_STM32_SERIAL_USART1 is not set
+# CONFIG_STM32_SERIAL_USART1_ALT_PB7_PB6 is not set
+# CONFIG_STM32_SERIAL_USART2 is not set
+# CONFIG_STM32_SERIAL_USART2_ALT_PD6_PD5 is not set
+# CONFIG_STM32_SERIAL_USART3 is not set
+# CONFIG_STM32_SERIAL_USART3_ALT_PD9_PD8 is not set
+# CONFIG_STM32_CANBUS_PA11_PA12 is not set
+# CONFIG_STM32_CANBUS_PA11_PB9 is not set
+# CONFIG_STM32_MMENU_CANBUS_PB8_PB9 is not set
+# CONFIG_STM32_MMENU_CANBUS_PI9_PH13 is not set
+# CONFIG_STM32_MMENU_CANBUS_PB5_PB6 is not set
+# CONFIG_STM32_MMENU_CANBUS_PB12_PB13 is not set
+# CONFIG_STM32_MMENU_CANBUS_PD0_PD1 is not set
+# CONFIG_STM32_USBCANBUS_PA11_PA12 is not set
+CONFIG_USB=y
+CONFIG_USB_VENDOR_ID=0x1d50
+CONFIG_USB_DEVICE_ID=0x614e
+CONFIG_USB_SERIAL_NUMBER_CHIPID=y
+CONFIG_USB_SERIAL_NUMBER="12345"
+
+#
+# USB ids
+#
+# end of USB ids
+
+CONFIG_CANBUS_FREQUENCY=500000
+CONFIG_INITIAL_PINS=""
+CONFIG_HAVE_GPIO=y
+CONFIG_HAVE_GPIO_ADC=y
+CONFIG_HAVE_GPIO_SPI=y
+CONFIG_HAVE_GPIO_SDIO=y
+CONFIG_HAVE_GPIO_I2C=y
+CONFIG_HAVE_GPIO_HARD_PWM=y
+CONFIG_HAVE_GPIO_BITBANGING=y
+CONFIG_HAVE_STRICT_TIMING=y
+CONFIG_HAVE_CHIPID=y
+CONFIG_HAVE_STEPPER_BOTH_EDGE=y
+CONFIG_HAVE_BOOTLOADER_REQUEST=y
+CONFIG_INLINE_STEPPER_HACK=y
+=======================
+Build file /home/mks/klipper/klippy/../out/klipper.dict(8495): Sun Mar  5 17:11:35 2023
+Last MCU build version: ?-20230305_171135-mkspi
+Last MCU build tools: gcc: (15:7-2018-q2-6) 7.3.1 20180622 (release) [ARM/embedded-7-branch revision 261907] binutils: (2.31.1-12+11) 2.31.1
+Last MCU build config: ADC_MAX=4095 BUS_PINS_i2c1=PB6,PB7 BUS_PINS_i2c1a=PB8,PB9 BUS_PINS_i2c2=PB10,PB11 BUS_PINS_i2c2a=PH4,PH5 BUS_PINS_i2c3=PA8,PC9 BUS_PINS_i2c3a=PH7,PH8 BUS_PINS_sdio=PC12,PD2,PC8,PC9,PC10,PC11 BUS_PINS_spi1=PA6,PA7,PA5 BUS_PINS_spi1a=PB4,PB5,PB3 BUS_PINS_spi2=PB14,PB15,PB13 BUS_PINS_spi2a=PC2,PC3,PB10 BUS_PINS_spi2b=PI2,PI3,PI1 BUS_PINS_spi3=PB4,PB5,PB3 BUS_PINS_spi3a=PC11,PC12,PC10 CLOCK_FREQ=168000000 MCU=stm32f407xx PWM_MAX=255 RESERVE_PINS_USB=PA11,PA12 RESERVE_PINS_crystal=PH0,PH1 STATS_SUMSQ_BASE=256 STEPPER_BOTH_EDGE=1
+Build file /home/mks/klipper/klippy/../out/klipper.elf(377440): Sun Mar  5 17:11:46 2023
+Starting Klippy...
+Args: ['/home/mks/klipper/klippy/klippy.py', '/home/mks/printer_data/config/printer.cfg', '-I', '/home/mks/printer_data/comms/klippy.serial', '-l', '/home/mks/printer_data/logs/klippy.log', '-a', '/home/mks/printer_data/comms/klippy.sock']
+Git version: 'v0.11.0-122-ge6ef48cd'
+CPU: 4 core ?
+Python: '3.7.3 (default, Oct 31 2022, 14:04:00) \n[GCC 8.3.0]'
+Start printer at Sat Apr 15 18:55:48 2023 (1681556148.2 25.9)
+===== Config file =====
+[mcu]
+restart_method = command
+serial = /dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00
+
+[stepper_x]
+step_pin = PC14
+dir_pin = !PC13
+enable_pin = !PC15
+microsteps = 16
+rotation_distance = 40
+full_steps_per_rotation = 200
+endstop_pin = PA14
+position_min = 0
+position_endstop = 230
+position_max = 230
+homing_speed = 50
+homing_retract_dist = 5
+homing_positive_dir = true
+step_pulse_duration = 0.000008
+
+[stepper_y]
+step_pin = PE5
+dir_pin = !PE4
+enable_pin = !PD14
+microsteps = 16
+rotation_distance = 40
+full_steps_per_rotation = 200
+endstop_pin = PA15
+position_min = 0
+position_endstop = 230
+position_max = 230
+homing_speed = 50
+homing_retract_dist = 5
+homing_positive_dir = true
+step_pulse_duration = 0.000008
+
+[stepper_z]
+step_pin = PE1
+dir_pin = !PE0
+enable_pin = !PE2
+microsteps = 16
+rotation_distance = 40
+full_steps_per_rotation = 200
+gear_ratio = 80:16
+endstop_pin = probe:z_virtual_endstop
+position_max = 255
+position_min = -5
+homing_speed = 8
+second_homing_speed = 3
+
+[stepper_z1]
+step_pin = PD6
+dir_pin = PD5
+enable_pin = !PD7
+microsteps = 16
+rotation_distance = 40
+full_steps_per_rotation = 200
+gear_ratio = 80:16
+
+[stepper_z2]
+step_pin = PD2
+dir_pin = PD1
+enable_pin = !PD3
+microsteps = 16
+rotation_distance = 40
+full_steps_per_rotation = 200
+gear_ratio = 80:16
+
+[stepper_z3]
+step_pin = PC7
+dir_pin = PC6
+enable_pin = !PC8
+microsteps = 16
+rotation_distance = 40
+full_steps_per_rotation = 200
+gear_ratio = 80:16
+
+[extruder]
+step_pin = PB5
+dir_pin = !PB4
+enable_pin = !PB6
+microsteps = 16
+rotation_distance = 25.12
+gear_ratio = 50:17
+full_steps_per_rotation = 200
+nozzle_diameter = 0.400
+filament_diameter = 1.750
+min_temp = 0
+max_temp = 275
+heater_pin = PB1
+sensor_type = NTC 100K MGB18-104F39050L32
+sensor_pin = PC1
+max_power = 1.0
+control = pid
+pid_kp = 26.213
+pid_ki = 1.304
+pid_kd = 131.721
+pressure_advance = 0.00
+pressure_advance_smooth_time = 0.150
+max_extrude_cross_section = 20
+instantaneous_corner_velocity = 1.000
+max_extrude_only_distance = 50.0
+max_extrude_only_velocity = 5000
+max_extrude_only_accel = 2000
+step_pulse_duration = 0.000004
+
+[fan]
+pin = PA2
+
+[heater_fan fan1]
+pin = PA1
+shutdown_speed = 1
+
+[heater_fan fan2]
+pin = PA0
+shutdown_speed = 1
+
+[idle_timeout]
+timeout = 3600
+
+[safe_z_home]
+home_xy_position = 115,115
+speed = 100
+z_hop = 10
+z_hop_speed = 5
+
+[quad_gantry_level]
+gantry_corners = 
+	-58,-7
+	308,318
+points = 
+	10,10
+	10,200
+	220,200
+	220,10
+speed = 80
+horizontal_move_z = 10
+retries = 1
+retry_tolerance = 0.05
+max_adjust = 30
+
+[probe]
+pin = !PB15
+x_offset = 0
+y_offset = 25.0
+z_offset = 0.55
+speed = 10.0
+samples = 2
+samples_result = median
+sample_retract_dist = 3.0
+samples_tolerance = 0.05
+samples_tolerance_retries = 1
+
+[printer]
+kinematics = corexy
+max_velocity = 500
+max_accel = 8000
+max_accel_to_decel = 4000
+max_z_velocity = 15
+max_z_accel = 100
+square_corner_velocity = 2.0
+
+[tmc2209 stepper_x]
+uart_pin = PE6
+run_current = 0.8
+hold_current = 0.5
+interpolate = True
+stealthchop_threshold = 400
+
+[tmc2209 stepper_y]
+uart_pin = PE3
+run_current = 0.8
+hold_current = 0.5
+interpolate = True
+stealthchop_threshold = 400
+
+[tmc2209 stepper_z]
+uart_pin = PB7
+run_current = 0.8
+hold_current = 0.5
+interpolate = True
+stealthchop_threshold = 120
+
+[tmc2209 stepper_z1]
+uart_pin = PD4
+interpolate = True
+run_current = 0.8
+hold_current = 0.5
+stealthchop_threshold = 120
+
+[tmc2209 stepper_z2]
+uart_pin = PD0
+interpolate = True
+run_current = 0.8
+hold_current = 0.5
+stealthchop_threshold = 120
+
+[tmc2209 stepper_z3]
+uart_pin = PD15
+interpolate = True
+run_current = 0.8
+hold_current = 0.5
+stealthchop_threshold = 120
+
+[tmc2209 extruder]
+uart_pin = PB3
+run_current = 0.8
+hold_current = 0.5
+interpolate = True
+stealthchop_threshold = 400
+
+[board_pins]
+aliases = 
+	
+	EXP1_1=PB2,  EXP1_3=PE11, EXP1_5=PD9, EXP1_7=PE15, EXP1_9=<GND>,
+	EXP1_2=PE10, EXP1_4=PD10, EXP1_6=PD8, EXP1_8=PE7,  EXP1_10=<5V>,
+	
+	EXP2_1=PA6, EXP2_3=PE9, EXP2_5=PE8, EXP2_7=PD13,  EXP2_9=<GND>,
+	EXP2_2=PA5, EXP2_4=PA4, EXP2_6=PA7, EXP2_8=<RST>, EXP2_10=<3.3v>
+
+[display]
+lcd_type = uc1701
+cs_pin = EXP1_3
+a0_pin = EXP1_4
+rst_pin = EXP1_5
+contrast = 63
+encoder_pins = ^EXP2_5, ^EXP2_3
+click_pin = ^!EXP1_2
+spi_software_miso_pin = EXP2_1
+spi_software_mosi_pin = EXP2_6
+spi_software_sclk_pin = EXP2_2
+
+[output_pin beeper]
+pin = EXP1_1
+
+[neopixel fysetc_mini12864]
+pin = EXP1_6
+chain_count = 3
+color_order = RGB
+initial_red = 1.0
+initial_green = 1.0
+initial_blue = 0.0
+
+[mcu rpi]
+serial = /tmp/klipper_host_mcu
+
+[adxl345]
+cs_pin = rpi:None
+spi_bus = spidev0.0
+
+[resonance_tester]
+accel_chip = adxl345
+probe_points = 
+	100, 100, 20
+
+[input_shaper]
+shaper_freq_x = 68.4
+shaper_type_x = mzv
+shaper_freq_y = 45.6
+shaper_type_y = mzv
+
+[virtual_sdcard]
+path = /home/mks/printer_data/gcodes
+
+[pause_resume]
+
+[gcode_macro CANCEL_PRINT]
+description = Cancel the actual running print
+rename_existing = CANCEL_PRINT_BASE
+gcode = 
+	TURN_OFF_HEATERS
+	CANCEL_PRINT_BASE
+
+[display_status]
+
+[gcode_macro G32]
+gcode = 
+	BED_MESH_CLEAR
+	G28
+	QUAD_GANTRY_LEVEL
+	G2888
+=======================
+Extruder max_extrude_ratio=8.315034
+mcu 'mcu': Starting serial connect
+mcu 'mcu': Unable to open serial port: [Errno 2] could not open port /dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00: [Errno 2] No such file or directory: '/dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00'
+webhooks client 281473069441208: New connection
+webhooks client 281473069441208: Client info {'program': 'Moonraker', 'version': 'v0.8.0-23-g18f5ff4-dirty'}
+mcu 'mcu': Unable to open serial port: [Errno 2] could not open port /dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00: [Errno 2] No such file or directory: '/dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00'
+mcu 'mcu': Unable to open serial port: [Errno 2] could not open port /dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00: [Errno 2] No such file or directory: '/dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00'
+mcu 'mcu': Unable to open serial port: [Errno 2] could not open port /dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00: [Errno 2] No such file or directory: '/dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00'
+mcu 'mcu': Unable to open serial port: [Errno 2] could not open port /dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00: [Errno 2] No such file or directory: '/dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00'
+mcu 'mcu': Unable to open serial port: [Errno 2] could not open port /dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00: [Errno 2] No such file or directory: '/dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00'
+mcu 'mcu': Unable to open serial port: [Errno 2] could not open port /dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00: [Errno 2] No such file or directory: '/dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00'
+mcu 'mcu': Unable to open serial port: [Errno 2] could not open port /dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00: [Errno 2] No such file or directory: '/dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00'
+mcu 'mcu': Unable to open serial port: [Errno 2] could not open port /dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00: [Errno 2] No such file or directory: '/dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00'
+mcu 'mcu': Unable to open serial port: [Errno 2] could not open port /dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00: [Errno 2] No such file or directory: '/dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00'
+mcu 'mcu': Unable to open serial port: [Errno 2] could not open port /dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00: [Errno 2] No such file or directory: '/dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00'
+mcu 'mcu': Unable to open serial port: [Errno 2] could not open port /dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00: [Errno 2] No such file or directory: '/dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00'
+mcu 'mcu': Unable to open serial port: [Errno 2] could not open port /dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00: [Errno 2] No such file or directory: '/dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00'
+mcu 'mcu': Unable to open serial port: [Errno 2] could not open port /dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00: [Errno 2] No such file or directory: '/dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00'
+mcu 'mcu': Unable to open serial port: [Errno 2] could not open port /dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00: [Errno 2] No such file or directory: '/dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00'
+mcu 'mcu': Unable to open serial port: [Errno 2] could not open port /dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00: [Errno 2] No such file or directory: '/dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00'
+mcu 'mcu': Unable to open serial port: [Errno 2] could not open port /dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00: [Errno 2] No such file or directory: '/dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00'
+mcu 'mcu': Unable to open serial port: [Errno 2] could not open port /dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00: [Errno 2] No such file or directory: '/dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00'
+MCU error during connect
+Traceback (most recent call last):
+  File "/home/mks/klipper/klippy/mcu.py", line 798, in _mcu_identify
+    self._serial.connect_uart(self._serialport, self._baud, rts)
+  File "/home/mks/klipper/klippy/serialhdl.py", line 182, in connect_uart
+    self._error("Unable to connect")
+  File "/home/mks/klipper/klippy/serialhdl.py", line 61, in _error
+    raise error(self.warn_prefix + (msg % params))
+serialhdl.error: mcu 'mcu': Unable to connect
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/mks/klipper/klippy/klippy.py", line 176, in _connect
+    self.send_event("klippy:mcu_identify")
+  File "/home/mks/klipper/klippy/klippy.py", line 263, in send_event
+    return [cb(*params) for cb in self.event_handlers.get(event, [])]
+  File "/home/mks/klipper/klippy/klippy.py", line 263, in <listcomp>
+    return [cb(*params) for cb in self.event_handlers.get(event, [])]
+  File "/home/mks/klipper/klippy/mcu.py", line 803, in _mcu_identify
+    raise error(str(e))
+mcu.error: mcu 'mcu': Unable to connect
+Build file /home/mks/klipper/klippy/../.config(3223): Sun Mar  5 17:11:05 2023
+========= Last MCU build config =========
+CONFIG_LOW_LEVEL_OPTIONS=y
+# CONFIG_MACH_AVR is not set
+# CONFIG_MACH_ATSAM is not set
+# CONFIG_MACH_ATSAMD is not set
+# CONFIG_MACH_LPC176X is not set
+CONFIG_MACH_STM32=y
+# CONFIG_MACH_HC32F460 is not set
+# CONFIG_MACH_RP2040 is not set
+# CONFIG_MACH_PRU is not set
+# CONFIG_MACH_AR100 is not set
+# CONFIG_MACH_LINUX is not set
+# CONFIG_MACH_SIMU is not set
+CONFIG_BOARD_DIRECTORY="stm32"
+CONFIG_MCU="stm32f407xx"
+CONFIG_CLOCK_FREQ=168000000
+CONFIG_USBSERIAL=y
+CONFIG_FLASH_SIZE=0x80000
+CONFIG_FLASH_BOOT_ADDRESS=0x8000000
+CONFIG_RAM_START=0x20000000
+CONFIG_RAM_SIZE=0x20000
+CONFIG_STACK_SIZE=512
+CONFIG_FLASH_APPLICATION_ADDRESS=0x800C000
+CONFIG_STM32_SELECT=y
+# CONFIG_MACH_STM32F103 is not set
+# CONFIG_MACH_STM32F207 is not set
+# CONFIG_MACH_STM32F401 is not set
+# CONFIG_MACH_STM32F405 is not set
+CONFIG_MACH_STM32F407=y
+# CONFIG_MACH_STM32F429 is not set
+# CONFIG_MACH_STM32F446 is not set
+# CONFIG_MACH_STM32F031 is not set
+# CONFIG_MACH_STM32F042 is not set
+# CONFIG_MACH_STM32F070 is not set
+# CONFIG_MACH_STM32F072 is not set
+# CONFIG_MACH_STM32G070 is not set
+# CONFIG_MACH_STM32G071 is not set
+# CONFIG_MACH_STM32G0B0 is not set
+# CONFIG_MACH_STM32G0B1 is not set
+# CONFIG_MACH_STM32G431 is not set
+# CONFIG_MACH_STM32H723 is not set
+# CONFIG_MACH_STM32H743 is not set
+# CONFIG_MACH_STM32H750 is not set
+# CONFIG_MACH_STM32L412 is not set
+CONFIG_MACH_STM32F4=y
+CONFIG_MACH_STM32F4x5=y
+CONFIG_HAVE_STM32_USBOTG=y
+CONFIG_HAVE_STM32_CANBUS=y
+CONFIG_HAVE_STM32_USBCANBUS=y
+CONFIG_STM32_DFU_ROM_ADDRESS=0x1fff0000
+# CONFIG_STM32_FLASH_START_8000 is not set
+# CONFIG_STM32_FLASH_START_20200 is not set
+CONFIG_STM32_FLASH_START_C000=y
+# CONFIG_STM32_FLASH_START_4000 is not set
+# CONFIG_STM32_FLASH_START_0000 is not set
+CONFIG_STM32_CLOCK_REF_8M=y
+# CONFIG_STM32_CLOCK_REF_12M is not set
+# CONFIG_STM32_CLOCK_REF_16M is not set
+# CONFIG_STM32_CLOCK_REF_20M is not set
+# CONFIG_STM32_CLOCK_REF_25M is not set
+# CONFIG_STM32_CLOCK_REF_INTERNAL is not set
+CONFIG_CLOCK_REF_FREQ=8000000
+CONFIG_STM32F0_TRIM=16
+CONFIG_STM32_USB_PA11_PA12=y
+# CONFIG_STM32_SERIAL_USART1 is not set
+# CONFIG_STM32_SERIAL_USART1_ALT_PB7_PB6 is not set
+# CONFIG_STM32_SERIAL_USART2 is not set
+# CONFIG_STM32_SERIAL_USART2_ALT_PD6_PD5 is not set
+# CONFIG_STM32_SERIAL_USART3 is not set
+# CONFIG_STM32_SERIAL_USART3_ALT_PD9_PD8 is not set
+# CONFIG_STM32_CANBUS_PA11_PA12 is not set
+# CONFIG_STM32_CANBUS_PA11_PB9 is not set
+# CONFIG_STM32_MMENU_CANBUS_PB8_PB9 is not set
+# CONFIG_STM32_MMENU_CANBUS_PI9_PH13 is not set
+# CONFIG_STM32_MMENU_CANBUS_PB5_PB6 is not set
+# CONFIG_STM32_MMENU_CANBUS_PB12_PB13 is not set
+# CONFIG_STM32_MMENU_CANBUS_PD0_PD1 is not set
+# CONFIG_STM32_USBCANBUS_PA11_PA12 is not set
+CONFIG_USB=y
+CONFIG_USB_VENDOR_ID=0x1d50
+CONFIG_USB_DEVICE_ID=0x614e
+CONFIG_USB_SERIAL_NUMBER_CHIPID=y
+CONFIG_USB_SERIAL_NUMBER="12345"
+
+#
+# USB ids
+#
+# end of USB ids
+
+CONFIG_CANBUS_FREQUENCY=500000
+CONFIG_INITIAL_PINS=""
+CONFIG_HAVE_GPIO=y
+CONFIG_HAVE_GPIO_ADC=y
+CONFIG_HAVE_GPIO_SPI=y
+CONFIG_HAVE_GPIO_SDIO=y
+CONFIG_HAVE_GPIO_I2C=y
+CONFIG_HAVE_GPIO_HARD_PWM=y
+CONFIG_HAVE_GPIO_BITBANGING=y
+CONFIG_HAVE_STRICT_TIMING=y
+CONFIG_HAVE_CHIPID=y
+CONFIG_HAVE_STEPPER_BOTH_EDGE=y
+CONFIG_HAVE_BOOTLOADER_REQUEST=y
+CONFIG_INLINE_STEPPER_HACK=y
+=======================
+Build file /home/mks/klipper/klippy/../out/klipper.dict(8495): Sun Mar  5 17:11:35 2023
+Last MCU build version: ?-20230305_171135-mkspi
+Last MCU build tools: gcc: (15:7-2018-q2-6) 7.3.1 20180622 (release) [ARM/embedded-7-branch revision 261907] binutils: (2.31.1-12+11) 2.31.1
+Last MCU build config: ADC_MAX=4095 BUS_PINS_i2c1=PB6,PB7 BUS_PINS_i2c1a=PB8,PB9 BUS_PINS_i2c2=PB10,PB11 BUS_PINS_i2c2a=PH4,PH5 BUS_PINS_i2c3=PA8,PC9 BUS_PINS_i2c3a=PH7,PH8 BUS_PINS_sdio=PC12,PD2,PC8,PC9,PC10,PC11 BUS_PINS_spi1=PA6,PA7,PA5 BUS_PINS_spi1a=PB4,PB5,PB3 BUS_PINS_spi2=PB14,PB15,PB13 BUS_PINS_spi2a=PC2,PC3,PB10 BUS_PINS_spi2b=PI2,PI3,PI1 BUS_PINS_spi3=PB4,PB5,PB3 BUS_PINS_spi3a=PC11,PC12,PC10 CLOCK_FREQ=168000000 MCU=stm32f407xx PWM_MAX=255 RESERVE_PINS_USB=PA11,PA12 RESERVE_PINS_crystal=PH0,PH1 STATS_SUMSQ_BASE=256 STEPPER_BOTH_EDGE=1
+Build file /home/mks/klipper/klippy/../out/klipper.elf(377440): Sun Mar  5 17:11:46 2023
+Starting Klippy...
+Args: ['/home/mks/klipper/klippy/klippy.py', '/home/mks/printer_data/config/printer.cfg', '-I', '/home/mks/printer_data/comms/klippy.serial', '-l', '/home/mks/printer_data/logs/klippy.log', '-a', '/home/mks/printer_data/comms/klippy.sock']
+Git version: 'v0.11.0-122-ge6ef48cd'
+CPU: 4 core ?
+Python: '3.7.3 (default, Oct 31 2022, 14:04:00) \n[GCC 8.3.0]'
+Start printer at Sat Apr 15 18:58:42 2023 (1681556322.9 25.8)
+===== Config file =====
+[mcu]
+restart_method = command
+serial = /dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00
+
+[stepper_x]
+step_pin = PC14
+dir_pin = !PC13
+enable_pin = !PC15
+microsteps = 16
+rotation_distance = 40
+full_steps_per_rotation = 200
+endstop_pin = PA14
+position_min = 0
+position_endstop = 230
+position_max = 230
+homing_speed = 50
+homing_retract_dist = 5
+homing_positive_dir = true
+step_pulse_duration = 0.000008
+
+[stepper_y]
+step_pin = PE5
+dir_pin = !PE4
+enable_pin = !PD14
+microsteps = 16
+rotation_distance = 40
+full_steps_per_rotation = 200
+endstop_pin = PA15
+position_min = 0
+position_endstop = 230
+position_max = 230
+homing_speed = 50
+homing_retract_dist = 5
+homing_positive_dir = true
+step_pulse_duration = 0.000008
+
+[stepper_z]
+step_pin = PE1
+dir_pin = !PE0
+enable_pin = !PE2
+microsteps = 16
+rotation_distance = 40
+full_steps_per_rotation = 200
+gear_ratio = 80:16
+endstop_pin = probe:z_virtual_endstop
+position_max = 255
+position_min = -5
+homing_speed = 8
+second_homing_speed = 3
+
+[stepper_z1]
+step_pin = PD6
+dir_pin = PD5
+enable_pin = !PD7
+microsteps = 16
+rotation_distance = 40
+full_steps_per_rotation = 200
+gear_ratio = 80:16
+
+[stepper_z2]
+step_pin = PD2
+dir_pin = PD1
+enable_pin = !PD3
+microsteps = 16
+rotation_distance = 40
+full_steps_per_rotation = 200
+gear_ratio = 80:16
+
+[stepper_z3]
+step_pin = PC7
+dir_pin = PC6
+enable_pin = !PC8
+microsteps = 16
+rotation_distance = 40
+full_steps_per_rotation = 200
+gear_ratio = 80:16
+
+[extruder]
+step_pin = PB5
+dir_pin = !PB4
+enable_pin = !PB6
+microsteps = 16
+rotation_distance = 25.12
+gear_ratio = 50:17
+full_steps_per_rotation = 200
+nozzle_diameter = 0.400
+filament_diameter = 1.750
+min_temp = 0
+max_temp = 275
+heater_pin = PB1
+sensor_type = NTC 100K MGB18-104F39050L32
+sensor_pin = PC1
+max_power = 1.0
+control = pid
+pid_kp = 26.213
+pid_ki = 1.304
+pid_kd = 131.721
+pressure_advance = 0.00
+pressure_advance_smooth_time = 0.150
+max_extrude_cross_section = 20
+instantaneous_corner_velocity = 1.000
+max_extrude_only_distance = 50.0
+max_extrude_only_velocity = 5000
+max_extrude_only_accel = 2000
+step_pulse_duration = 0.000004
+
+[fan]
+pin = PA2
+
+[heater_fan fan1]
+pin = PA1
+shutdown_speed = 1
+
+[heater_fan fan2]
+pin = PA0
+shutdown_speed = 1
+
+[idle_timeout]
+timeout = 3600
+
+[safe_z_home]
+home_xy_position = 115,115
+speed = 100
+z_hop = 10
+z_hop_speed = 5
+
+[quad_gantry_level]
+gantry_corners = 
+	-58,-7
+	308,318
+points = 
+	10,10
+	10,200
+	220,200
+	220,10
+speed = 80
+horizontal_move_z = 10
+retries = 1
+retry_tolerance = 0.05
+max_adjust = 30
+
+[probe]
+pin = !PB15
+x_offset = 0
+y_offset = 25.0
+z_offset = 0.55
+speed = 10.0
+samples = 2
+samples_result = median
+sample_retract_dist = 3.0
+samples_tolerance = 0.05
+samples_tolerance_retries = 1
+
+[printer]
+kinematics = corexy
+max_velocity = 500
+max_accel = 8000
+max_accel_to_decel = 4000
+max_z_velocity = 15
+max_z_accel = 100
+square_corner_velocity = 2.0
+
+[tmc2209 stepper_x]
+uart_pin = PE6
+run_current = 0.8
+hold_current = 0.5
+interpolate = True
+stealthchop_threshold = 400
+
+[tmc2209 stepper_y]
+uart_pin = PE3
+run_current = 0.8
+hold_current = 0.5
+interpolate = True
+stealthchop_threshold = 400
+
+[tmc2209 stepper_z]
+uart_pin = PB7
+run_current = 0.8
+hold_current = 0.5
+interpolate = True
+stealthchop_threshold = 120
+
+[tmc2209 stepper_z1]
+uart_pin = PD4
+interpolate = True
+run_current = 0.8
+hold_current = 0.5
+stealthchop_threshold = 120
+
+[tmc2209 stepper_z2]
+uart_pin = PD0
+interpolate = True
+run_current = 0.8
+hold_current = 0.5
+stealthchop_threshold = 120
+
+[tmc2209 stepper_z3]
+uart_pin = PD15
+interpolate = True
+run_current = 0.8
+hold_current = 0.5
+stealthchop_threshold = 120
+
+[tmc2209 extruder]
+uart_pin = PB3
+run_current = 0.8
+hold_current = 0.5
+interpolate = True
+stealthchop_threshold = 400
+
+[board_pins]
+aliases = 
+	
+	EXP1_1=PB2,  EXP1_3=PE11, EXP1_5=PD9, EXP1_7=PE15, EXP1_9=<GND>,
+	EXP1_2=PE10, EXP1_4=PD10, EXP1_6=PD8, EXP1_8=PE7,  EXP1_10=<5V>,
+	
+	EXP2_1=PA6, EXP2_3=PE9, EXP2_5=PE8, EXP2_7=PD13,  EXP2_9=<GND>,
+	EXP2_2=PA5, EXP2_4=PA4, EXP2_6=PA7, EXP2_8=<RST>, EXP2_10=<3.3v>
+
+[display]
+lcd_type = uc1701
+cs_pin = EXP1_3
+a0_pin = EXP1_4
+rst_pin = EXP1_5
+contrast = 63
+encoder_pins = ^EXP2_5, ^EXP2_3
+click_pin = ^!EXP1_2
+spi_software_miso_pin = EXP2_1
+spi_software_mosi_pin = EXP2_6
+spi_software_sclk_pin = EXP2_2
+
+[output_pin beeper]
+pin = EXP1_1
+
+[neopixel fysetc_mini12864]
+pin = EXP1_6
+chain_count = 3
+color_order = RGB
+initial_red = 1.0
+initial_green = 1.0
+initial_blue = 0.0
+
+[mcu rpi]
+serial = /tmp/klipper_host_mcu
+
+[adxl345]
+cs_pin = rpi:None
+spi_bus = spidev0.0
+
+[resonance_tester]
+accel_chip = adxl345
+probe_points = 
+	100, 100, 20
+
+[input_shaper]
+shaper_freq_x = 68.4
+shaper_type_x = mzv
+shaper_freq_y = 45.6
+shaper_type_y = mzv
+
+[virtual_sdcard]
+path = /home/mks/printer_data/gcodes
+
+[pause_resume]
+
+[gcode_macro CANCEL_PRINT]
+description = Cancel the actual running print
+rename_existing = CANCEL_PRINT_BASE
+gcode = 
+	TURN_OFF_HEATERS
+	CANCEL_PRINT_BASE
+
+[display_status]
+
+[gcode_macro G32]
+gcode = 
+	BED_MESH_CLEAR
+	G28
+	QUAD_GANTRY_LEVEL
+	G2888
+=======================
+Extruder max_extrude_ratio=8.315034
+mcu 'mcu': Starting serial connect
+mcu 'mcu': Unable to open serial port: [Errno 2] could not open port /dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00: [Errno 2] No such file or directory: '/dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00'
+webhooks client 281473534570680: New connection
+webhooks client 281473534570680: Client info {'program': 'Moonraker', 'version': 'v0.8.0-23-g18f5ff4-dirty'}
+mcu 'mcu': Unable to open serial port: [Errno 2] could not open port /dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00: [Errno 2] No such file or directory: '/dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00'
+mcu 'mcu': Unable to open serial port: [Errno 2] could not open port /dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00: [Errno 2] No such file or directory: '/dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00'
+mcu 'mcu': Unable to open serial port: [Errno 2] could not open port /dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00: [Errno 2] No such file or directory: '/dev/serial/by-id/usb-Klipper_stm32f407xx_2C003B001250314335393520-if00'
