@@ -27,7 +27,8 @@ done < <(grep -v '^#' "$parent_path"/.env | grep 'path_' | sed 's/^.*=//')
 if [ -n "$1" ]; then
     commit_message="$1"
 else
-    commit_message="New backup from $(date +"%d-%m-%y")"
+    # commit_message="New backup from $(date +"%d-%m-%y")"
+    commit_message="New backup from $(date +R)"
 fi
 
 # Git commands
