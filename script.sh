@@ -28,7 +28,7 @@ if [ -n "$1" ]; then
     commit_message="$1"
 else
     # commit_message="New backup from $(date +"%d-%m-%y")"
-    commit_message="New backup from $(date +R)"
+    commit_message="New backup from $(date -R)"
 fi
 
 # Git commands
