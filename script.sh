@@ -38,8 +38,9 @@ git init
 #git filter-branch --force --index-filter \
 #  'git rm -r --cached --ignore-unmatch "$parent_path"/.env' \
 #  --prune-empty --tag-name-filter cat -- --all
-git filter-branch --force --index-filter \
-  --prune-empty --tag-name-filter cat -- --all
+# this works when done manually:
+# git filter-branch --force --prune-empty --tag-name-filter cat -- --all
+git filter-branch --force --prune-empty --tag-name-filter cat -- --all
 #git rm -rf --cached "$parent_path"/.env
 git add "$parent_path"
 git commit -m "$commit_message"
